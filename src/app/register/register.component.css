@@ -1,0 +1,52 @@
+.register-container{    
+    display: flex;
+    justify-content: center;
+    margin: 5vw;
+}
+
+form{
+    padding: 2vw;
+    border: 1px solid black;
+    border-radius: 5px;    
+}
+
+.form-group{
+    margin: 0.5vw 1vw 0.5vw 1vw;
+}
+
+label{
+    padding: 0.2vw;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+input{
+    width: 25vw;
+    padding: 0.8vw;
+    border-radius: 5px;
+}
+
+.button-container{
+    display: flex;
+    justify-content: space-between;    
+}
+
+button{
+    margin-top: 0.5vw;
+    width: 8vw;
+    height: 3vw;
+    font-size: 20px;
+    font-weight: 500; 
+}
+
+button:hover{
+    border: 1px solid black;
+    text-decoration: underline;
+    font-weight: 600;
+}
+
+.invalid-feedback{
+    color: red;
+}
+
+  

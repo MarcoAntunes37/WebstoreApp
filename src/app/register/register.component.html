@@ -1,0 +1,125 @@
+<div class="register-container">
+    <form [formGroup]="registerForm"
+        name="registerForm"
+        (ngSubmit)="onSubmit()"        
+        novalidate
+    >
+        <div class="form-group">
+            <label for="firstName">Firstname</label>
+            <input
+                type="text"
+                class="form-control"            
+                name="firstName"
+                formControlName="firstName"
+                [ngClass]="{ 'is-invalid': submitted && fc['firstName'].errors }"
+            />
+            <div *ngIf="submitted && fc['firstName'].errors" class="invalid-feedback">                
+                <div *ngIf="fc['firstName'].errors['required']">Firstname is required</div>
+                <div *ngIf="fc['firstName'].errors['minlength']">Firstname must be at least 3 characteres</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="lastName">Lastname</label>
+            <input
+                type="text"
+                class="form-control"            
+                name="lastName"
+                formControlName="lastName"
+                [ngClass]="{ 'is-invalid': submitted && fc['lastName'].errors }"
+            />
+            <div *ngIf="submitted && fc['lastName'].errors" class="invalid-feedback">
+                <div *ngIf="fc['lastName'].errors['required']">Lastname is required</div>
+                <div *ngIf="fc['lastName'].errors['minlength']">Lastname must be at least 3 characteres</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="telephone">Telephone</label>
+            <input
+                type="text"
+                class="form-control"            
+                name="telephone"
+                formControlName="telephone"
+                [ngClass]="{ 'is-invalid': submitted && fc['telephone'].errors }"
+            />
+            <div *ngIf="submitted && fc['telephone'].errors" class="invalid-feedback">
+                <div *ngIf="fc['telephone'].errors['required']">Telephone is required</div>
+                <div *ngIf="fc['telephone'].errors['minlength']">Telephone must be 11 characteres</div>
+                <div *ngIf="fc['telephone'].errors['maxlength']">Telephone must be 11 characteres</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input
+                type="text"
+                class="form-control"            
+                name="email"
+                formControlName="email"
+                [ngClass]="{ 'is-invalid': submitted && fc['email'].errors }"
+            />
+            <div *ngIf="submitted && fc['email'].errors" class="invalid-feedback">
+                <div *ngIf="fc['email'].errors['required']">Email is required</div>
+                <div *ngIf="fc['email'].errors['email']">Email must be an valid email</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input
+                type="text"
+                class="form-control"            
+                name="username"
+                formControlName="username"
+                [ngClass]="{ 'is-invalid': submitted && fc['username'].errors }"
+            />
+            <div *ngIf="submitted && fc['username'].errors" class="invalid-feedback">
+                <div *ngIf="fc['username'].errors['required']">Username is required</div>
+                <div *ngIf="fc['username'].errors['minlength']">Username must be at least 8 characteres</div>
+                <div *ngIf="fc['username'].errors['maxlength']">Username must not exceed 20 characteres</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input
+                type="password"
+                class="form-control"            
+                name="password"
+                formControlName="password"
+                [ngClass]="{ 'is-invalid': submitted && fc['password'].errors }"
+            />
+            <div *ngIf="submitted && fc['password'].errors" class="invalid-feedback">
+                <div *ngIf="fc['password'].errors['required']">Password is required</div>
+                <div *ngIf="fc['password']!.hasError('strenght')">Password must have at least one special character, one capital letter and one number</div>
+                <div *ngIf="fc['password'].errors['maxlength']">Password must be at least 8 characteres</div>
+                <div *ngIf="fc['password'].errors['maxlength']">Password must not exceed 30 characteres</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="confirmPassword">Confirm password</label>
+            <input
+                type="password"
+                class="form-control"            
+                name="confirmPassword"
+                formControlName="confirmPassword"
+                [ngClass]="{ 'is-invalid': submitted && fc['confirmPassword'].errors }"
+            />
+            <div *ngIf="submitted && fc['confirmPassword'].errors" class="invalid-feedback">
+                <div *ngIf="fc['confirmPassword'].errors['required']">Confirm password is required</div>
+                <div *ngIf="fc['confirmPassword'].errors['minlength']">Confirm password must be at least 8 characteres</div>
+                <div *ngIf="fc['confirmPassword'].errors['maxlength']">Confirm password must not exceed 30 characteres</div>
+                <div *ngIf="fc['confirmPassword']!.hasError('matching')">Confirm password does not match</div>
+            </div>
+        </div>
+        <div class="form-group button-container">
+            <button type="submit" class="primary-button">Register</button>
+            <button
+              type="button"
+              (click)="onReset()"
+              class="secondary-button"
+            >
+              Reset
+            </button>
+          </div>
+         <div class="form-group">
+            <div *ngIf="submitted && errorMessage" class="invalid-feedback">{{errorMessage}}</div>
+         </div>
+    </form>    
+</div>

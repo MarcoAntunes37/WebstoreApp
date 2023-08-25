@@ -1,0 +1,37 @@
+<div class="address-details">        
+    <h1>Addresses</h1>
+    <div class="">
+        <button (click)="newAddress()">new address</button>
+    </div>
+    <div class="" *ngFor="let address of addresses; let i = index">
+        <div class="" *ngIf="!isAddressEditable()"> 
+            <div class="street">{{address.street}}</div>
+            <div class="city">{{address.city}}</div>
+            <div class="state">{{address.state}}</div>
+            <div class="country">{{address.country}}</div>
+            <div class="postalCode">{{address.postalCode}}</div>
+        </div>
+        <form *ngIf="isAddressEditable()">
+            <div class="form-group">
+                <input type="text" class="street" value={{address.street}} />
+            </div>
+            <div class="form-group">
+                <input type="text" class="city" value={{address.city}} />
+            </div>
+            <div class="form-group">
+                <input type="text" class="state" value={{address.state}} />
+            </div>
+            <div class="form-group">
+                <input type="text" class="country" value={{address.country}} />
+            </div>
+            <div class="form-group">
+                <input type="text" class="postalCode" value={{address.postalCode}} />
+            </div>
+            <button>Update address</button>
+            <button type="clear">Clear</button>
+        </form>
+        <div class="button-container" *ngIf="!isAddressEditable()">
+            <button (click)="changeAddressEditable()">Edit Address</button>
+            <button (click)="deleteAddress(address.id)">Delete Address</button>
+        </div>
+    </div>

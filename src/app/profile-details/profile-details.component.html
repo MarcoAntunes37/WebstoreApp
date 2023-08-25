@@ -1,0 +1,24 @@
+<div class="profile-details">
+    <h1>Profile</h1>
+    <div class="username" >{{username}}</div> 
+    <div class="email">{{email}}</div>   
+    <div class="firstName" *ngIf="!isUserEditable()">{{firstName}}</div>
+    <div class="lastName" *ngIf="!isUserEditable()" >{{lastName}}</div>    
+    <div class="telephone" *ngIf="!isUserEditable()" >{{telephone}}</div>    
+    <form *ngIf="isUserEditable()">
+        <div class="form-group">
+            <input type="text" value={{firstName}}>
+        </div>
+        <div class="form-group">
+            <input type="text" value={{lastName}}>
+        </div>
+        <div class="form-group">
+            <input type="text" value={{telephone}}>
+        </div>        
+        <button>Update user</button>
+        <button type="clear">clear</button>
+    </form>
+    <div class="button-container">
+        <button *ngIf="!isUserEditable()" (click)="changeUserEditable()">Edit user</button>
+    </div>
+</div>

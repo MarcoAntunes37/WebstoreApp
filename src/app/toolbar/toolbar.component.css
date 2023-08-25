@@ -1,0 +1,166 @@
+.toolbar {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    position: static;
+    float: none;
+    background-color: #14213d !important;
+    color: #FFFF !important;
+}
+
+.toolbar-left {
+    padding: 20px;
+}
+
+.logo {
+    font-size: 30px;
+    height: 60px;
+    color: #FFFF !important;
+}
+
+.toolbar-fill,
+.toolbar-right {
+    display: inline-flex;
+}
+
+.toolbar-left {
+    width: 20%;
+}
+
+.toolbar-right {
+    width: 20%;
+    justify-content: space-evenly;
+}
+
+.toolbar-fill {
+    width: 60%;
+    flex: 1
+}
+
+.search-toolbar {
+    display: inline-flex;
+    margin: auto;
+    flex: 1;
+}
+
+input[type=text] {
+    width: 80%;
+    margin-left: auto;
+    border: 3px solid #fca311;
+    border-right: none;
+    padding: 5px;
+    height: 30px;
+    border-radius: 5px 0 0 5px;
+    outline: none;
+}
+
+.search-button {
+    width: 46px;
+    height: 46px;
+    border: 1px solid #fca311;
+    background: #fca311;
+    text-align: center;
+    color: #000;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    font-size: 20px;
+    margin-right: auto;
+}
+
+.searchTerm:focus {
+    color: #fca311;
+}
+
+.dropown-menu {
+    display: flex;
+    font-size: 18px;
+    justify-content: center;
+    align-items: center;
+    max-width: 55w;
+}
+
+.signin-dropdown {
+    color: #FFFF !important;
+    height: 30px;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.dropdown-content {
+    display: none;
+    width: 30%;
+    font-size: 14px;
+    line-height: 70px;
+    height: 100px;
+    overflow: hidden;
+    background-color: #FFFF;
+    border: #000 solid 1px;
+    border-radius: 15px;
+    text-align: center;
+    padding: 10px;
+    z-index: 1;
+}
+
+.icon-expand {
+    height: 30px;
+}
+
+span {
+
+    display: inline-flex;
+    margin-bottom: 0px;
+    color: black;
+}
+
+.button {
+    display: flex;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+    background-color: #fca311;
+    color: #000;
+    border-radius: 15px;
+}
+
+.signin-button {
+    width: 50%;
+    margin: auto;
+}
+
+.logout-button{
+    margin: auto;
+    padding: 1vw;
+}
+
+a:visited,
+a:link,
+a {
+    text-decoration: none;
+    color: #1d4289;
+}
+
+.user-options{
+    display: flex;
+    justify-content: space-between;
+    
+}
+
+
+.dropown-menu:hover .dropdown-content {
+    display: block;
+    top: 80px;
+    right: 85px;
+    position: fixed;
+}
+
+.shopping-cart {
+    padding: 10px;
+    margin: auto;
+    display: inline-flex;
+}
+
+.mat-icon-36-size {
+    width: auto;
+    height: auto;
+    font-size: 36px !important;
+}

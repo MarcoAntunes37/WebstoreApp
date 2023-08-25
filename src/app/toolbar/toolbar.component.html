@@ -1,0 +1,45 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<div class="toolbar" role="banner">
+  <div class="toolbar-left">
+    <a routerLink="/home" class="link-logo">
+      <img src="assets\img\ressources\fulllogoWebstore.png" alt="">
+    </a>
+  </div>
+  <div class="toolbar-fill">
+    <div class="search-toolbar">
+      <input type="text" placeholder="Search in webstore" />
+      <button type="submit" class="search-button">
+        <mat-icon>search</mat-icon>
+      </button>
+    </div>
+  </div>
+  <div class="toolbar-right">
+    <div class="dropown-menu username" *ngIf="isLoggedIn">
+      {{username}}
+      <mat-icon class="icon-expand">expand_more</mat-icon>
+      <div class="dropdown-content">
+        <div class="user-options">
+          <div class="user-options-left">
+            <a [routerLink]="['/user-details/'+username]">Show you profile</a>
+          </div>
+          <div class="user-options-right">
+            <button class="thertiary-button logout-button" (click)="logout()">Logout</button>
+          </div>          
+        </div>
+      </div> 
+    </div>   
+    <div class="dropown-menu" *ngIf="!isLoggedIn">
+      <span class="signin-dropdown">Sign in</span>
+      <mat-icon class="icon-expand">expand_more</mat-icon>
+      <div class="dropdown-content">
+      <a routerLink="/login">
+          <button class="button signin-button">Sign in <mat-icon>login</mat-icon></button>
+        </a>
+        <span>You are new? You can signup&nbsp;<a routerLink="/register">here</a></span>
+      </div>
+    </div>
+    <div class="shopping-cart">
+      <mat-icon class="material-icons mat-icon-36-size">shopping_cart</mat-icon>
+    </div>
+  </div>
+</div>

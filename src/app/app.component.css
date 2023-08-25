@@ -1,0 +1,19 @@
+
+/*START MAIN*/
+.content{
+    border: #000 1px solid;
+}
+
+.container-content{
+    display: flex;
+}
+
+.parent {
+    display: grid;        
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+}
+
+/*END MAIN*/

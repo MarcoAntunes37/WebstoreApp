@@ -1,0 +1,17 @@
+<div class="user-information-container">
+    <app-profile-details 
+        [username]="user.username"
+        [email]="user.email"
+        [firstName]="user.firstName"
+        [lastName]="user.lastName"
+        [telephone]="user.telephone"
+
+    />
+    <app-address-details
+        [addresses]="user.addresses"
+    />
+    <app-credit-card-details
+        [creditCards]="user.creditCards"
+    />
+    
+</div>

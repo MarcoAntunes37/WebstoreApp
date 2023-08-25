@@ -1,0 +1,28 @@
+<div class="item-list-container">
+    <div *ngIf="isLoading()" style="color: black">Loading...</div>
+    <div class="invalid-feedback" *ngIf="errorMessage()">{{errorMessage()}}</div>
+    <div class="item-container" *ngFor="let product of products()">
+    <!--product detail link-->
+       <a href="javascript:void(0)" [routerLink]="['/product-details', product.id]">
+            <div class="image-container">
+                <img class="image" src={{product.imageUrl}}/>
+            </div>
+            <div class="info-container">                
+                <div class="name">
+                    <p>{{product.name}}</p>
+                </div>
+                <div class="price">
+                    R<span>{{product.price}}</span>
+                </div>
+                <div class="quantity">
+                    <span class="product-quantity" *ngIf="product.quantity  > 0">
+                        {{product.quantity}}
+                    </span>
+                    <span class="product-quantity out-stock" *ngIf="product.quantity == 0 ">
+                       Out of stock
+                    </span>
+                </div>
+            </div>
+        </a>
+    </div>    
+</div>

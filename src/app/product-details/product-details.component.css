@@ -1,0 +1,48 @@
+.product-container{
+    width: 100%;
+}
+
+.product-details{
+    display: flex;
+    flex-direction: row;
+}
+
+img{
+    width: 350px;
+    height: 350px;
+}
+
+.image{
+    margin: 5vw;
+    width: 30vw;
+}
+
+.info-container{
+    width: 40vw;
+    margin: 5vw;
+    display: flex;
+    flex-direction: column;
+}
+
+hr{
+    text-decoration: underline;
+    display: inline-block;
+    width: 100%;
+}
+
+.about-item{
+    display: flex;
+    flex-direction: row;
+}
+
+.button-container{
+    display: flex;
+    flex-direction: column;
+    width: 20vw;
+    margin: 10vw 5vw 0 0;
+}
+
+.buy-now, .add-cart{
+    margin: 1vw;
+    width: 15vw;
+}
