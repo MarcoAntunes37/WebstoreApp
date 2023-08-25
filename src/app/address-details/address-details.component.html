@@ -1,18 +1,20 @@
-<div class="address-details">        
+<div class="address-details">
     <h1>Addresses</h1>
     <div class="button-new">
         <button (click)="newAddress()">new address</button>
     </div>
-    <div class="" *ngFor="let address of addresses; let i = index">
-        <div class="" > 
+    <div></div>
+    <div class="" *ngFor="let address of addresses">
+        <div class="">
             <div class="street">{{address.street}}</div>
             <div class="city">{{address.city}}</div>
             <div class="state">{{address.state}}</div>
             <div class="country">{{address.country}}</div>
             <div class="postalCode">{{address.postalCode}}</div>
-        </div>        
+        </div>
         <div class="button-container">
-            <button (click)="editAddress(address.id)">Edit Address</button>
+            <button routerLink="edit-address/">Edit Address</button>
             <button (click)="deleteAddress(address.id)">Delete Address</button>
         </div>
     </div>
+</div>

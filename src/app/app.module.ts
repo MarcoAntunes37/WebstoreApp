@@ -17,6 +17,12 @@ import { ProfileDetailsComponent } from './profile-details/profile-details.compo
 import { UserDetailsComponent } from './user-details/user-details.component';
 import { AddressDetailsComponent } from './address-details/address-details.component';
 import { CreditCardDetailsComponent } from './credit-card-details/credit-card-details.component';
+import { NewAddressComponent } from './new-address/new-address.component';
+import { EditAddressComponent } from './edit-address/edit-address.component';
+import { NewCreditCardComponent } from './new-credit-card/new-credit-card.component';
+import { EditCreditCardComponent } from './edit-credit-card/edit-credit-card.component';
+import { EditProfileComponent } from './edit-profile/edit-profile.component';
+import { ChangePasswordComponent } from './change-password/change-password.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +38,12 @@ import { CreditCardDetailsComponent } from './credit-card-details/credit-card-de
     UserDetailsComponent,
     AddressDetailsComponent,
     CreditCardDetailsComponent,
+    NewAddressComponent,
+    EditAddressComponent,
+    NewCreditCardComponent,
+    EditCreditCardComponent,
+    EditProfileComponent,
+    ChangePasswordComponent,
   ],
   imports: [
     BrowserModule,

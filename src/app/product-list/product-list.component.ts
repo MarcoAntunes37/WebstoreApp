@@ -24,7 +24,6 @@ export class ProductListComponent implements OnInit {
 
   loadProductList(){
     this.isLoading.set(true);
-    console.log(this.isLoading())
     setTimeout( () =>
     of(this.getProducts()).subscribe({
       next: (n)=> {
@@ -41,7 +40,6 @@ export class ProductListComponent implements OnInit {
       },
       complete: () => {
         this.isLoading.set(false);
-        console.log('Load list complete')
       }
     }), 0)
   }

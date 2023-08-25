@@ -33,6 +33,10 @@ export class UserService {
   return this.http.post(`${API_URL}${id}`, user)
  }
 
+ updateUserPassword(user: any, id: string){
+  return this.http.post(`${API_URL}${id}/password`, user)
+ }
+
  deleteUser(id: string):Observable<any> {
    return this.http.delete(`${API_URL}${id}`);   
  }

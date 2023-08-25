@@ -10,12 +10,13 @@ import { StorageService } from '../_services/storage.service';
 export class ToolbarComponent {
 private storageService = inject(StorageService) 
 @Input() username?:string;
-@Input() isLoggedIn?:boolean;
+isLoggedIn: any;
 @Input() role?:string;
  
  ngOnInit(){
   if(this.username){
     this.isLoggedIn = true;
+    console.log(this.username)
   }
  }
 

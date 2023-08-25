@@ -1,8 +1,7 @@
-import { Component, Input, inject, signal } from '@angular/core';
-import { UserService } from '../_services/user.service';
-import { Observable, of } from 'rxjs';
-import { User } from '../_interfaces/User';
-import { AbstractControl, FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { Component, Input, inject} from '@angular/core';
+
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-profile-details',
@@ -10,31 +9,43 @@ import { AbstractControl, FormBuilder, FormControl, FormGroup } from '@angular/f
   styleUrls: ['./profile-details.component.css']
 })
 export class ProfileDetailsComponent {
-  private fb = inject(FormBuilder)
+  private router = inject(Router)
+  @Input() id!: string;
   @Input() username!:string;
   @Input() email!:string;
   @Input() firstName!:string;
   @Input() lastName!:string;
   @Input() telephone!:string;
-  isUserEditable = signal<boolean>(false);
 
-  updateUserForm = new FormGroup({
-    firstName: new FormControl<string>(''),
-    lastName: new FormControl<string>(''),
-    telephone: new FormControl<string>(''),
-  })
+  ngInit(){
 
-  ngOnInit(){
-    this.updateUserForm = this.fb.group({
-        firstName: [''],
-        lastName: [''],
-        telephone: ['']
-    })
   }
-  get fc(): { [key: string]: AbstractControl } {
-    return this.updateUserForm.controls;
+
+  callEditPasswordRoute(){
+    this.router.navigate(
+      ['user-details/'+this.username+'/change-password'],{
+        state: {
+          id: this.id
+        }
+      }
+    )
   }
-  changeUserEditable(){
-    this.isUserEditable.set(!this.isUserEditable())
+  callEditUserRoute(){    
+    this.router.navigate(
+      ['user-details/'+this.username+'/edit-user/'], {
+        state: { 
+          user: {
+          id: this.id,
+          username: this.username,
+          email: this.email,
+          firstName: this.firstName,
+          lastName: this.lastName,
+          telephone: this.telephone
+          }
+        }
+      }
+    )
   }
+
+
 }

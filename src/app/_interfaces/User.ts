@@ -2,6 +2,7 @@ import { Address } from "./Address";
 import { CreditCard } from "./CreditCard";
 
 export interface User {
+    id: string,
     firstName: string,
     lastName: string,
     email: string,
