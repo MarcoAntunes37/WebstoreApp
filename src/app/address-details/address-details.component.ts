@@ -30,6 +30,10 @@ export class AddressDetailsComponent {
   newAddress(){
     console.log("new address")
   }
+
+  editAddress(id:string){
+    
+  }
   
   deleteAddress(id: string){
     console.log("delete address" +id)
