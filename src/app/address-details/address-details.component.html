@@ -1,9 +1,8 @@
 <div class="address-details">
     <h1>Addresses</h1>
     <div class="button-new">
-        <button (click)="newAddress()">new address</button>
+        <button (click)="callNewAddressRoute()">new address</button>
     </div>
-    <div></div>
     <div class="" *ngFor="let address of addresses">
         <div class="">
             <div class="street">{{address.street}}</div>
@@ -13,8 +12,8 @@
             <div class="postalCode">{{address.postalCode}}</div>
         </div>
         <div class="button-container">
-            <button routerLink="edit-address/">Edit Address</button>
-            <button (click)="deleteAddress(address.id)">Delete Address</button>
+            <button (click)="callEditAddressRoute(address)">Edit Address</button>
+            <button (click)="callDeleteAddressRoute()">Delete Address</button>
         </div>
     </div>
 </div>

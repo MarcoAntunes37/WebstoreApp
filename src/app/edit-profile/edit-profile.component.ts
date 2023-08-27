@@ -45,12 +45,28 @@ export class EditProfileComponent {
   }
 
   editUserOnClick(){
-    console.log(this.user)
-    console.log(this.editProfileForm.value)
+    const userDto: any = {
+      firstName: this.editProfileForm.value.firstName,
+      lastName: this.editProfileForm.value.lastName,
+      username: this.editProfileForm.value.username,
+      email: this.editProfileForm.value.email,
+      telephone: this.editProfileForm.value.telephone,
+    }
+    this.updateUser(userDto).subscribe({
+      next: (n) => {
+        console.log(n)
+      },
+      error: (e) => {
+        console.log(e)
+      },
+      complete: () => {
+
+      }
+    })
     
   }
 
   updateUser(user: any): Observable<User>{
-    return this.userService.updateUser(user, this.id);
+    return this.userService.updateUser(user, this.user.id);
   }
 }

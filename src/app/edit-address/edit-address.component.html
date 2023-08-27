@@ -1,20 +1,50 @@
 <div class="edit-address-container">
     <h3>Edit address</h3>
-    <form>
+    <form
+        name="editAddressForm"
+        [formGroup]="editAddressForm"
+        (ngSubmit)="editAddressOnClick()"  
+        novalidate
+    >
         <div class="form-group">
-            <div class="street"></div>
+            <label for="street">Street</label>
+            <div class="street">
+                <input type="text"
+                    value={{address.street}}
+                >
+            </div>
         </div>
         <div class="form-group">
-            <div class="city"></div>
+            <label for="city">City</label>
+            <div class="city">
+                <input type="text"
+                    value={{address.city}}
+                >
+            </div>
         </div>
         <div class="form-group">
-            <div class="state"></div>
+            <label for="state">State</label>
+            <div class="state">
+                <input type="text"
+                    value={{address.state}}
+                >
+            </div>
         </div>
         <div class="form-group">
-            <div class="country"></div>
+            <label for="country">Country</label>
+            <div class="country">
+                <input type="text"
+                    value={{address.country}}
+                >
+            </div>
         </div>
         <div class="form-group">
-            <div class="postalCode"></div>
+            <label for="postalCode">Postal code</label>
+            <div class="postalCode">
+                <input type="text"
+                    value={{address.postalCode}}
+                >
+            </div>
         </div>
     </form>
 </div>

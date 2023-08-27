@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { User } from 'src/app/_interfaces/User';
 import { StorageService } from './storage.service';
+import { UserChangePassword } from '../_interfaces/UserChangePassword';
 
 const API_URL = 'https://localhost:7296/api/users/';
 
@@ -29,12 +30,12 @@ export class UserService {
   return this.http.post(API_URL, user);
  }
 
- updateUser(user: User, id: string):Observable<any> {
-  return this.http.post(`${API_URL}${id}`, user)
+ updateUser(user: any, id: string):Observable<any> {
+  return this.http.put(`${API_URL}${id}`, user)
  }
 
- updateUserPassword(user: any, id: string){
-  return this.http.post(`${API_URL}${id}/password`, user)
+ updateUserPassword(user: UserChangePassword, id: string):Observable<any>{
+  return this.http.put(`${API_URL}${id}/password`, user)
  }
 
  deleteUser(id: string):Observable<any> {

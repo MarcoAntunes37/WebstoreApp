@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from '../_services/user.service';
 import { Observable } from 'rxjs';
+import { UserChangePassword } from '../_interfaces/UserChangePassword';
 
 @Component({
   selector: 'app-change-password',
@@ -30,14 +31,31 @@ export class ChangePasswordComponent {
       newPassword: '',
       confirmPassword: ''
     })
-    console.log(this.state.id)
   }
 
     changePasswordOnClick(){
-      console.log(this.changePasswordForm.value)
+      const {password, newPassword, confirmPassword} = this.changePasswordForm.value
+      this.updatePassword(password!, newPassword!, confirmPassword!, this.state.id).subscribe(
+        {
+          next: (n) => {
+            console.log(n);
+          },
+          error: (e) => {
+            console.log(e)
+          },
+          complete: () => {
+            
+          }
+        }
+      )
     }
-
-    updatePassword(user: any, id: string): Observable<any>{
+    
+    updatePassword(password: string, newPassword: string, confirmPassword: string, id: string): Observable<any>{
+      let user: UserChangePassword = {
+        password: password,
+        newPassword: newPassword,
+        confirmPassword: confirmPassword,
+      }
       return this.userService.updateUserPassword(user, id);
     }
 }

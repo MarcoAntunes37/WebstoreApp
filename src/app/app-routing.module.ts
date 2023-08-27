@@ -26,7 +26,7 @@ const routes: Routes = [
   {path: 'user-details/:username/edit-user', component: EditProfileComponent, pathMatch: 'full'},
   {path: 'user-details/:username/change-password', component: ChangePasswordComponent, pathMatch: 'full'},
   {path: 'user-details/:username/new-address', component:NewAddressComponent, pathMatch: 'full'},
-  {path: 'edit-address/:id', component: EditAddressComponent, pathMatch: 'full'},
+  {path: 'user-details/:username/edit-address', component: EditAddressComponent, pathMatch: 'full'},
   {path: '**', component: PageNotFoundComponent},
 ];
 

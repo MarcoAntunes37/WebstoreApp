@@ -1,5 +1,6 @@
-import { Component, Input, inject, signal } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { Component, Input, inject} from '@angular/core';
+import { Router } from '@angular/router';
+import { Address } from '../_interfaces/Address';
 
 @Component({
   selector: 'app-address-details',
@@ -9,16 +10,27 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 export class AddressDetailsComponent {  
   @Input() addresses!: any[]
   @Input() userId!: string
-
-  newAddress(){
-    console.log("new address")
+  @Input() username!: string
+  selectedAddress!: any;
+  router = inject(Router)
+ 
+  callEditAddressRoute(address: Address){    
+    this.selectedAddress = address;
+    this.router.navigate(
+      ['user-details/'+this.username+'/edit-address/'],{
+        state: {
+          userId: this.userId,
+          address: this.selectedAddress
+        }
+      }
+    )
   }
 
-  editAddress(id:string){
-    console.log("editAddress"+id)
+  callNewAddressRoute(){
+
   }
-  
-  deleteAddress(id: string){
-    console.log("delete address" +id)
+
+  callDeleteAddressRoute(){
+
   }
 }
