@@ -1,5 +1,7 @@
 import { Component, Input, inject, signal } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { UserService } from '../_services/user.service';
+import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-credit-card-details',
@@ -7,29 +9,48 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
   styleUrls: ['./credit-card-details.component.css']
 })
 export class CreditCardDetailsComponent {
-  private fb = inject(FormBuilder); 
-  isCreditCardEditable = signal<boolean>(false)
-  updateCreditCardForm = new FormGroup({
-    name: new FormControl<string>(''),
-    number: new FormControl<string>(''),
-    expirationDate: new FormControl<Date>(new Date()),
-    cvv: new FormControl<string>('')
-  })
-  @Input() creditCards!: any[];
+  @Input() creditCards!: any[]
+  @Input() userId!: string
+  @Input() username!: string
+  private userService = inject(UserService)
+  selectedCreditCard!: any;
+  router = inject(Router)
 
-  ngInit(){
-
-  }  
-
-  changeCreditCardEditable(){
-    this.isCreditCardEditable.set(!this.isCreditCardEditable())
+  callNewCreditCardRoute(){
+    this.router.navigate(['user-details/'+this.username+'/new-credit-card'], 
+    {
+      state: { 
+        userId: this.userId 
+      }
+    })
   }
-  
-  newCreditCard(){
-    console.log("new credit card")
+
+  callEditCreditCardRoute(creditCard: any){
+    this.selectedCreditCard = creditCard
+    this.router.navigate(['user-details/'+this.username+'/edit-credit-card'],
+    {
+      state: {
+        userId: this.userId,
+        creditCard: this.selectedCreditCard,
+      }
+    })
   }
-  
-  deleteCreditCard(id: string){
-    console.log("delete credit card" +id)
+
+  callDeleteCreditCardRoute(id: string){
+    this.deleteCreditCard(id, this.userId).subscribe({
+      next: (n) => {
+        console.log(n)
+      },
+      error: (e) => {
+        console.log(e)
+      },
+      complete: () => {
+
+      }
+    })
+  }
+
+  deleteCreditCard(id: string, userId: string): Observable<any>{
+    return this.userService.deleteCreditCard(id, userId);
   }
 }

@@ -10,23 +10,33 @@ import { NewAddressComponent } from './new-address/new-address.component';
 import { EditAddressComponent } from './edit-address/edit-address.component';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
+import { NewCreditCardComponent } from './new-credit-card/new-credit-card.component';
+import { EditCreditCardComponent } from './edit-credit-card/edit-credit-card.component';
 
 const routes: Routes = [
+  //product-list
   {path: '', component: ProductListComponent },
-  {
-    path: 'home', component: ProductListComponent,    
-  },
-  {
-    path: 'product-details/:id', 
-    component: ProductDetailsComponent,
-  },
+  {path: 'home', component: ProductListComponent},
+  {path: 'product-details/:id', component: ProductDetailsComponent},
+  
+  //authentication
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
+  
+  //profile
   {path: 'user-details/:username', component: UserDetailsComponent, pathMatch:'full'},
   {path: 'user-details/:username/edit-user', component: EditProfileComponent, pathMatch: 'full'},
   {path: 'user-details/:username/change-password', component: ChangePasswordComponent, pathMatch: 'full'},
+  
+  //address
   {path: 'user-details/:username/new-address', component:NewAddressComponent, pathMatch: 'full'},
   {path: 'user-details/:username/edit-address', component: EditAddressComponent, pathMatch: 'full'},
+
+  //credit-card
+  {path: 'user-details/:useranme/new-credit-card', component: NewCreditCardComponent, pathMatch: 'full'},
+  {path: 'user-details/:username/edit-credit-card', component: EditCreditCardComponent, pathMatch: 'full'},
+  
+  //wildcard
   {path: '**', component: PageNotFoundComponent},
 ];
 

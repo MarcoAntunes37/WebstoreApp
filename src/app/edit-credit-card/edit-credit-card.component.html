@@ -1,1 +1,50 @@
-<p>edit-credit-card works!</p>
+<div class="edit-credit-card-container">
+    <h3>Edit address</h3>
+    <form
+        name="editCreditCardForm"
+        [formGroup]="editCreditCardForm"
+        (ngSubmit)="editCreditCardOnClick()"  
+        novalidate
+    >
+        <div class="form-group">
+            <label for="name">Name</label>
+            <div class="name">
+                <input type="text"
+                    formControlName="name"
+                    value={{creditCard.name}}
+                >
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="number">Number</label>
+            <div class="number">
+                <input type="text"
+                    formControlName="number"
+                    value={{creditCard.number}}
+                >
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="expirationDate">Expiration date</label>
+            <div class="expirationDate">
+                <input type="date"
+                    formControlName="expirationDate"
+                    value={{creditCard.expirationDate}}
+                >
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="cvv">Cvv</label>
+            <div class="cvv">
+                <input type="text"
+                    formControlName="cvv"
+                    value={{creditCard.cvv}}
+                >
+            </div>
+        </div>
+        <div class="buttons-container">
+            <button type="submit">Edit address</button>
+            <button type="clear">Clear</button>
+        </div>
+    </form>
+</div>

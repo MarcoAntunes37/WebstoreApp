@@ -10,6 +10,7 @@
             <label for="street">Street</label>
             <div class="street">
                 <input type="text"
+                    formControlName="street"
                     value={{address.street}}
                 >
             </div>
@@ -17,34 +18,52 @@
         <div class="form-group">
             <label for="city">City</label>
             <div class="city">
-                <input type="text"
-                    value={{address.city}}
+                <select
+                    formControlName="city"
                 >
+                    <option *ngFor="let city of filteredCity">
+                        {{city.name}}
+                    </option>
+                </select>
             </div>
         </div>
         <div class="form-group">
             <label for="state">State</label>
             <div class="state">
-                <input type="text"
-                    value={{address.state}}
+                <select
+                    formControlName="state"
+                    (change)="filterCitiesOnChangeState($event)"
                 >
+                    <option></option>
+                    <option *ngFor="let state of states">
+                        {{state.name}}
+                    </option>
+                </select>
             </div>
         </div>
         <div class="form-group">
             <label for="country">Country</label>
             <div class="country">
-                <input type="text"
-                    value={{address.country}}
+                <select
+                    formControlName="country"
                 >
+                    <option></option>
+                    <option>Brasil</option>
+                </select>
             </div>
         </div>
         <div class="form-group">
             <label for="postalCode">Postal code</label>
             <div class="postalCode">
                 <input type="text"
+                    formControlName="postalCode"
                     value={{address.postalCode}}
                 >
             </div>
+        </div>
+        <div class="buttons-container">
+            <button type="submit">Edit address</button>
+            <button type="clear">Clear</button>
         </div>
     </form>
 </div>

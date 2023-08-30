@@ -55,19 +55,20 @@ export class LoginComponent implements OnInit {
 
   apiCallLogin(){
     const { username, password } = this.loginForm.value    
-     this.authService.login(username!, password!).subscribe({
-       next: data => {
-         this.storageService.saveUser(data);
-         this.isLoginFailed = false;
-         this.isLoggedIn = true;
-         this.reloadPage();
-       },
-       error: err => {
-        let error = err.error.split("\r");
-         this.errorMessage = error[0].split(":")[1]
-         this.isLoginFailed = true;
-       }
-     });
+      this.authService.login(username!, password!).subscribe({
+        next: (data) => {
+          this.storageService.saveUser(data);
+          this.isLoginFailed = false;
+          this.isLoggedIn = true;
+          this.reloadPage();
+        },
+        error: (err) => {
+          let error = err.error.split("\r");
+          this.errorMessage = error[0].split(":")[1]
+          console.log(err)
+          this.isLoginFailed = true;
+        }
+      });
   }
 
   reloadPage(): void {

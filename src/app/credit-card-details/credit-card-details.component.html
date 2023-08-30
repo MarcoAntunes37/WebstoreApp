@@ -1,34 +1,18 @@
-<div class="credit-card-details">        
-    <h1>Credit Cards</h1>
-    <div class="">
-        <button>new credit card</button>
+<div class="credit-card-details">
+    <h1>Creditcards</h1>
+    <div class="button-new">
+        <button (click)="callNewCreditCardRoute()">New credit card</button>
     </div>
     <div class="" *ngFor="let creditCard of creditCards">
-        <div class="" *ngIf="!isCreditCardEditable()">
-            <div class="street">{{creditCard.number}}</div>
-            <div class="city">{{creditCard.name}}</div>
-            <div class="state">{{creditCard.expirationDate}}</div>
-            <div class="country">{{creditCard.cvv}}</div>
+        <div class="">
+            <div class="name">{{creditCard.name}}</div>
+            <div class="number">{{creditCard.number}}</div>
+            <div class="expirationDate">{{creditCard.expirationDate}}</div>
+            <div class="cvv">{{creditCard.cvv}}</div>            
         </div>
-        <form *ngIf="isCreditCardEditable()">
-            <div class="form-group">
-                <input type="text" class="number" value={{creditCard.number}} />
-            </div>
-            <div class="form-group">
-                <input type="text" class="name" value={{creditCard.name}} />
-            </div>
-            <div class="form-group">
-                <input type="text" class="cvv" value={{creditCard.cvv}} />
-            </div>
-            <div class="form-group">
-                <input type="text" class="expirationDate" value={{creditCard.expirationDate}} />
-            </div>
-            <button>update credit card</button>
-            <button type="clear">Clear</button>
-        </form>
-        <div class="button-container" *ngIf="!isCreditCardEditable()">
-            <button (click)="changeCreditCardEditable()">Edit Credit Card</button>
-            <button (click)="deleteCreditCard(creditCard.id)">Delete Credit Card</button>
+        <div class="button-container">
+            <button (click)="callEditCreditCardRoute(creditCard)">Edit credit card</button>
+            <button (click)="callDeleteCreditCardRoute(creditCard.id)">Delete creditCard</button>
         </div>
     </div>
 </div>

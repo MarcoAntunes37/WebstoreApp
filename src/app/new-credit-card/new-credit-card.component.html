@@ -1,1 +1,44 @@
-<p>new-credit-card works!</p>
+<div class="new-credit-card-container">
+    <form  name="newCreditCardForm"
+        [formGroup]="newCreditCardForm"
+        (ngSubmit)="callNewCreditCardRoute()"
+        novalidate
+    >
+        <div class="form-group">
+            <label for="name">Name</label>
+            <div class="name">
+                <input type="text"
+                    formControlName="name"
+                >
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="number">Number</label>
+            <div class="number">
+                <input type="text" 
+                    formControlName="number"
+                >
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="expirationDate">Expiration date</label>
+            <div class="expirationDate">
+                <input type="date" 
+                    formControlName="expirationDate"
+                >
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="cvv">Cvv</label>
+            <div class="cvv">
+                <input type="text"
+                    formControlName="cvv"
+                >
+            </div>
+        </div>
+        <div class="buttons-container">
+            <button type="submit">New address</button>
+            <button type="clear">Clear</button>
+        </div>
+    </form>
+</div>

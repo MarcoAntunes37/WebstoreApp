@@ -13,8 +13,6 @@ export class UserDetailsComponent {
   isLoading = signal<boolean>(false);
   errorMessage = signal<string>('');
   user!: User;
-  isAddressEditable = signal<boolean>(false);
-  isCreditCardEditable = signal<boolean>(false);
   
   @Input() username!:string;
 
