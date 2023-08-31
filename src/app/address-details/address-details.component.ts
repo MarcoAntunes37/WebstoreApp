@@ -34,6 +34,7 @@ export class AddressDetailsComponent {
       ['user-details/'+this.username+'/edit-address/'],{
         state: {
           userId: this.userId,
+          username: this.username,
           address: this.selectedAddress
         }
       }

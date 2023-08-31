@@ -1,7 +1,12 @@
 <div class="address-details">
     <h1>Addresses</h1>
     <div class="button-new">
-        <button (click)="callNewAddressRoute()">new address</button>
+        <button (click)="callNewAddressRoute()">
+            <mat-icon class="mat-icon-size">add</mat-icon>
+        </button>
+        <div class="">
+            New address
+        </div>
     </div>
     <div class="" *ngFor="let address of addresses">
         <div class="">
@@ -12,8 +17,12 @@
             <div class="postalCode">{{address.postalCode}}</div>
         </div>
         <div class="button-container">
-            <button (click)="callEditAddressRoute(address)">Edit Address</button>
-            <button (click)="callDeleteAddressRoute(address.id)">Delete Address</button>
+            <button (click)="callEditAddressRoute(address)">
+                <mat-icon class="mat-icon-size">edit</mat-icon>
+            </button>
+            <button (click)="callDeleteAddressRoute(address.id)">
+                <mat-icon class="mat-icon-size">delete</mat-icon>
+            </button>
         </div>
     </div>
 </div>

@@ -1,5 +1,6 @@
 <div class="new-address-container">
-    <form  name="newAddressForm"
+    <h3>New address</h3>
+    <form name="newAddressForm"
         [formGroup]="newAddressForm"
         (ngSubmit)="callNewAddressRoute()"
         novalidate
@@ -9,41 +10,71 @@
             <div class="street">
                 <input type="text"
                     formControlName="street"
+                    [ngClass]="{ 'is-invalid': submitted && fc['street'].errors }"
                 >
             </div>
-        </div>
-        <div class="form-group">
-            <label for="city">City</label>
-            <div class="city">
-                <select formControlName="city">
-                    <option ></option>
-                    <option *ngFor="let city of filteredCity">
-                        {{city.name}}
-                    </option>
-                </select>
+            <div *ngIf="submitted && fc['street'].errors" class="invalid-feedback">
+                <div *ngIf="fc['street'].errors['required']">Street is required</div>
             </div>
         </div>
         <div class="form-group">
             <label for="state">State</label>
             <div class="state">
-                <select formControlName="state"
+                <input type="text" 
+                    list="dynamicStates" 
+                    id="stateInput" 
+                    formControlName="state"
                     (change)="filterCitiesOnChangeState($event)"
+                    [ngClass]="{ 'is-invalid': submitted && fc['state'].errors }"
                 >
-                    <option></option>
-                    <option 
-                        *ngFor="let state of states"
+                <datalist id="dynamicStates">
+                    <option *ngFor="let state of states" 
+                        [value]="state.name"
                     >
                         {{state.name}}
-                    </option>>
-                </select>
+                    </option>
+                </datalist>
+            </div>
+            <div *ngIf="submitted && fc['state'].errors" class="invalid-feedback">
+                <div *ngIf="fc['state'].errors['required']">State is required</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="city">City</label>
+            <div class="city">
+                <input type="text" 
+                    id="cityInput"
+                    formControlName="city"
+                    list="dynamicCities"
+                    [ngClass]="{ 'is-invalid': submitted && fc['city'].errors }"
+                >
+                <datalist id="dynamicCities">
+                    <option *ngFor="let city of filteredCity" 
+                        [value]="city.name"
+                    >
+                        {{city.name}}
+                    </option>
+                </datalist>
+            </div>
+            <div *ngIf="submitted && fc['city'].errors" class="invalid-feedback">
+                <div *ngIf="fc['city'].errors['required']">City is required</div>
             </div>
         </div>
         <div class="form-group">
             <label for="country">Country</label>
             <div class="country">
-                <select formControlName="country">
-                    <option value="Brasil">Brasil</option>
-                </select>
+                <input type="text"
+                    formControlName="country"
+                    id="countryInput"
+                    list="countryList"
+                    [ngClass]="{ 'invalid-feedback': submitted && fc['country'].errors }"
+                >
+                <datalist id="countryList">
+                    <option>Brasil</option>
+                </datalist>
+            </div>
+            <div *ngIf="submitted && fc['country'].errors" class="invalid-feedback">
+                <div *ngIf="fc['country'].errors['required']">Country is required</div>
             </div>
         </div>
         <div class="form-group">
@@ -51,12 +82,18 @@
             <div class="postal-code">
                 <input type="text"
                     formControlName="postalCode"
+                    [ngClass]="{'is-invalid': submitted && fc['postalCode'].errors }"
                 >
+            </div>
+            <div *ngIf="submitted && fc['postalCode'].errors" class="invalid-feedback">
+                <div *ngIf="fc['postalCode'].errors['required']">Postal code is required</div>
+                <div *ngIf="fc['postalCode'].errors['minlength']">Postal code must have at least 8 characters</div>
+                <div *ngIf="fc['postalCode'].errors['maxlength']">Postal must have at maximum 8 characters</div>
             </div>
         </div>
         <div class="buttons-container">
-            <button type="submit">New address</button>
-            <button type="clear">Clear</button>
+            <button type="submit" class="primary-button">New address</button>
+            <button type="clear" class="thertiary-button">Clear</button>            
         </div>
     </form>
 </div>

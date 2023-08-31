@@ -19,13 +19,39 @@ export class RegisterComponent implements OnInit{
   private userService = inject(UserService)
   private router = inject(Router)
   registerForm: FormGroup = new FormGroup({
-    firstName: new FormControl<string>('', [Validators.required]),
-    lastName: new FormControl<string>('', [Validators.required]),
-    telephone: new FormControl<string>('', [Validators.required]),
-    email: new FormControl<string>('', [Validators.required]),
-    username: new FormControl<string>('', [Validators.required]),
-    password: new FormControl<string>('', [Validators.required]),
-    confirmPassword: new FormControl<string>('', [Validators.required])
+    firstName: new FormControl<string>('', [
+      Validators.required,
+      Validators.minLength(3)
+    ]),
+    lastName: new FormControl<string>('', [
+      Validators.required,
+      Validators.minLength(3)
+    ]),
+    telephone: new FormControl<string>('', [
+      Validators.required,
+      Validators.minLength(11),
+      Validators.maxLength(11)
+    ]),
+    email: new FormControl<string>('', [
+      Validators.required,
+      Validators.email
+    ]),
+    username: new FormControl<string>('', [
+      Validators.required,
+      Validators.minLength(8),
+      Validators.maxLength(20)
+    ]),
+    password: new FormControl<string>('', [
+      Validators.required,
+      Validators.minLength(8),
+      Validators.maxLength(30),
+      PasswordValidators.strenght
+    ]),
+    confirmPassword: new FormControl<string>('', [
+      Validators.required,
+      Validators.minLength(8),
+      Validators.maxLength(30)
+    ])
   })  
   isRegisterFailed = false;
   errorMessage = '';
@@ -37,39 +63,39 @@ export class RegisterComponent implements OnInit{
 
   ngOnInit():void{
    this.registerForm = this.fb.group({
-    firstName: ['', 
-      [ Validators.required, 
-      Validators.minLength(3) ]
-    ],
-    lastName: ['', 
-      [Validators.required,
-      Validators.minLength(3)]
-    ],
-    telephone: ['', 
+      firstName: ['', 
+        [ Validators.required, 
+        Validators.minLength(3) ]
+      ],
+      lastName: ['', 
+        [Validators.required,
+        Validators.minLength(3)]
+      ],
+      telephone: ['', 
+        [ Validators.required,
+        Validators.minLength(11),
+        Validators.maxLength(11) ]
+      ],
+      email: ['', 
+        [Validators.required,
+        Validators.email]
+      ],
+      username: ['', 
+        [ Validators.required,
+        Validators.minLength(8),
+        Validators.maxLength(20) ]
+      ],
+      password: ['',
       [ Validators.required,
-      Validators.minLength(11),
-      Validators.maxLength(11) ]
-    ],
-    email: ['', 
-      [Validators.required,
-      Validators.email]
-    ],
-    username: ['', 
+        Validators.minLength(8),
+        Validators.maxLength(30),
+        PasswordValidators.strenght ]
+      ],
+      confirmPassword: ['', 
       [ Validators.required,
       Validators.minLength(8),
-      Validators.maxLength(20) ]
-    ],
-    password: ['',
-     [ Validators.required,
-      Validators.minLength(8),
-      Validators.maxLength(30),
-      PasswordValidators.strenght ]
-    ],
-    confirmPassword: ['', 
-    [ Validators.required,
-    Validators.minLength(8),
-    Validators.maxLength(30), ]
-    ],
+      Validators.maxLength(30), ]
+      ],
     },
     {
        validators: [PasswordValidators.match('password', 'confirmPassword')],
@@ -83,13 +109,18 @@ export class RegisterComponent implements OnInit{
       this.isRegisterFailed = true;
       return;
     }
+    
     this.userService.createUser(this.registerForm.value!).subscribe({
-     next: (result) => {console.log(result)},
+     next: (result) => {
+        console.log(result)
+        alert(result)
+      },
      error: (err) => {
       console.log(err.error)
       this.errorMessage = err.error!.split(",")[0].split(":")[1].split('\r')[0]   
       },
-     complete: () => {setTimeout(()=>this.router.navigate(['home']), 2000);}     
+     complete: () => {
+      setTimeout(()=>this.router.navigate(['home']), 2000);}     
     })
   }
 

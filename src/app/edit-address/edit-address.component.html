@@ -12,44 +12,69 @@
                 <input type="text"
                     formControlName="street"
                     value={{address.street}}
+                    [ngClass]="{'invalid-feedback': submitted && fc['street'].errors}"
                 >
             </div>
-        </div>
-        <div class="form-group">
-            <label for="city">City</label>
-            <div class="city">
-                <select
-                    formControlName="city"
-                >
-                    <option *ngFor="let city of filteredCity">
-                        {{city.name}}
-                    </option>
-                </select>
+            <div *ngIf="submitted && fc['street'].errors" class="invalid-feedback">
+                <div *ngIf="fc['street'].errors['required']">Street is required</div>               
             </div>
         </div>
         <div class="form-group">
             <label for="state">State</label>
             <div class="state">
-                <select
+                <input type="text" 
+                    id="inputState"
+                    list="dynamicStates"
                     formControlName="state"
+                    [ngClass]="{'invalid-feedback': submitted && fc['state'].errors}"
                     (change)="filterCitiesOnChangeState($event)"
                 >
-                    <option></option>
-                    <option *ngFor="let state of states">
+                <datalist id="dynamicStates">
+                    <option *ngFor="let state of states" 
+                        [value]="state.name"
+                    >
                         {{state.name}}
                     </option>
-                </select>
+                </datalist>
+            </div>
+            <div *ngIf="submitted && fc['state'].errors" class="invalid-feedback">
+                <div *ngIf="fc['state'].errors['required']">State is required</div>               
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="city">City</label>
+            <div class="city">
+                <input type="text" 
+                    id="cityInput" 
+                    list="dynamicCities"
+                    formControlName="city"
+                    [ngClass]="{'invalid-feedback': submitted && fc['city'].errors}"
+                >
+                <datalist id="dynamicCities">
+                    <option *ngFor="let city of filteredCity">
+                        {{city.name}}
+                    </option>
+                </datalist>
+            </div>
+            <div *ngIf="submitted && fc['city'].errors" class="invalid-feedback">
+                <div *ngIf="fc['city'].errors['required']">City is required</div>               
             </div>
         </div>
         <div class="form-group">
             <label for="country">Country</label>
             <div class="country">
-                <select
+                <input type="text"
                     formControlName="country"
+                    id="countryInput"
+                    list="countryList"
+                    [ngClass]="{ 'invalid-feedback': submitted && fc['country'].errors }"
                 >
-                    <option></option>
+                <datalist id="countryList">
                     <option>Brasil</option>
-                </select>
+                </datalist>
+            </div>
+            <div *ngIf="submitted && fc['country'].errors" class="invalid-feedback">
+                <div *ngIf="fc['country'].errors['required']">Country is required</div>
             </div>
         </div>
         <div class="form-group">
@@ -58,12 +83,18 @@
                 <input type="text"
                     formControlName="postalCode"
                     value={{address.postalCode}}
+                    [ngClass]="{'invalid-feedback': submitted && fc['postalCode'].errors}"
                 >
+            </div>
+            <div *ngIf="submitted && fc['postalCode'].errors" class="invalid-feedback">
+                <div *ngIf="fc['postalCode'].errors['required']">Postal code is required</div>
+                <div *ngIf="fc['postalCode'].errors['minlength']">Postal code must have at least 8 characters</div>
+                <div *ngIf="fc['postalCode'].errors['maxlength']">Postal code must have at maximum 8 characters</div>   
             </div>
         </div>
         <div class="buttons-container">
-            <button type="submit">Edit address</button>
-            <button type="clear">Clear</button>
+            <button type="submit" class="primary-button">Edit address</button>
+            <button type="clear" class="thertiary-button">Clear</button>
         </div>
     </form>
 </div>

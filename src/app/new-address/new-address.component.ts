@@ -1,9 +1,10 @@
 import { Component, inject } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { UserService } from '../_services/user.service';
 import { Observable } from 'rxjs';
 import { Address } from '../_interfaces/Address';
 import { Router } from '@angular/router';
+import { Validators } from '@angular/forms';
 import data from '../../assets/forms-data/estados-cidades2.json'
 
 @Component({
@@ -19,46 +20,78 @@ export class NewAddressComponent {
   selectedState: any;
   filteredCity: any;
   cities = data.cities
+  isRegisterFailed = false;
+  errorMessage = '';
+  submitted = false; 
   newAddressForm = new FormGroup({
-    street: new FormControl<string>(''),
-    city: new FormControl<string>(''),
-    state: new FormControl<string>(''),
-    country: new FormControl<string>(''),
-    postalCode: new FormControl<string>('')
+    street: new FormControl<string>('', [
+      Validators.required
+    ]),
+    city: new FormControl<string>('', [
+      Validators.required
+    ]),
+    state: new FormControl<string>('', [
+      Validators.required
+    ]),
+    country: new FormControl<string>('', [
+      Validators.required
+    ]),
+    postalCode: new FormControl<string>('', [
+      Validators.required,
+      Validators.minLength(8),
+      Validators.maxLength(8)
+    ])
   })
 
   ngOnInit(){
-  
   this.newAddressForm = this.fb.group({
-    street: [''],
-    city: [''],
-    state: [''],
-    country: [''],
-    postalCode: ['']
+    street: ['', [Validators.required]],
+    city: ['', [Validators.required]],
+    state: ['', [Validators.required]],
+    country: ['', [Validators.required]],
+    postalCode: ['', [
+      Validators.required,
+      Validators.minLength(8), 
+      Validators.maxLength(8)]]
   })
  }
 
- filterCitiesOnChangeState(e: any){
+  get fc(): { [key: string]: AbstractControl } {
+    return this.newAddressForm.controls
+  }
+
+  filterCitiesOnChangeState(e: any){
     this.getStateId(e.target.value);
     this.filteredCity = this.cities.filter(x => x.state_id == this.selectedState.id)
- }
+  }
 
-getStateId(name: string){
-  this.selectedState = this.states.find(x => x.name == name)
-}
+  getStateId(name: string){
+    this.selectedState = this.states.find(x => x.name == name)
+  }
 
-  callNewAddressRoute(){
+  callNewAddressRoute():void{
+    this.submitted = true
+
+    if (this.newAddressForm.invalid) {
+      this.isRegisterFailed = true;
+      return;
+    }
+
     let newAddress = this.newAddressForm.value;
-    let userId = history.state.userId
+    let userId = history.state.userId;
+    
+    console.log('callingapi')
     this.createAddress(newAddress, userId).subscribe({
-      next: (n)=>{
+      next: (n) => {
         console.log(n)
+        alert(n)
       },
       error: (e) => {
         console.log(e)
+        this.errorMessage = e.error
       },
       complete: () => {
-        //this.router.navigate('user-details/'+ this.username)
+       
       }
     })
   }

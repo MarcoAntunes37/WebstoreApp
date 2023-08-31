@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from '../_services/user.service';
 import { Address } from '../_interfaces/Address';
@@ -18,26 +18,37 @@ export class EditAddressComponent {
   selectedState: any;
   filteredCity: any;
   cities = data.cities
+  isUpdateFailed = false;
+  errorMessage = '';
+  submitted = false; 
   id!: string;
   address!: Address;
   editAddressForm = new FormGroup({
-    street: new FormControl<string>(''),
-    city: new FormControl<string>(''),
-    state: new FormControl<string>(''),
-    country: new FormControl<string>(''),
-    postalCode: new FormControl<string>('')
+    street: new FormControl<string>('', [ Validators.required ]),
+    city: new FormControl<string>('', [ Validators.required ]),
+    state: new FormControl<string>('', [ Validators.required ]),
+    country: new FormControl<string>('', [ Validators.required ]),
+    postalCode: new FormControl<string>('', [ Validators.required ])
   })
 
   ngOnInit(){
     this.id = history.state.userId
     this.address = history.state.address
     this.editAddressForm = this.fb.group({
-      street: this.address.street,
-      city: this.address.city,
-      state: this.address.state,
-      country: this.address.country,
-      postalCode: this.address.postalCode
+      street: [this.address.street, [ Validators.required ]],
+      city: [this.address.city, [ Validators.required ]],
+      state: [this.address.state, [ Validators.required ]],
+      country: [this.address.country, [ Validators.required ]],
+      postalCode: [this.address.postalCode, [ 
+        Validators.required,
+        Validators.minLength(8), 
+        Validators.maxLength(8)
+      ]]
     })
+  }
+
+  get fc(): {[key: string]:AbstractControl}{
+    return this.editAddressForm.controls
   }
 
   filterCitiesOnChangeState(e: any){
@@ -49,7 +60,14 @@ export class EditAddressComponent {
     this.selectedState = this.states.find(x => x.name == name)
   }
 
-  editAddressOnClick(){
+  editAddressOnClick(): void{
+    this.submitted = true
+
+    if (this.editAddressForm.invalid) {
+      this.isUpdateFailed = true;
+      return;
+    }
+
     const {street, city, state, country, postalCode } = this.editAddressForm.value
 
     let addressUpdate = {
@@ -64,9 +82,11 @@ export class EditAddressComponent {
     this.updateAddress(addressUpdate, this.id).subscribe({
       next: (n) =>{
         console.log(n)
+        alert(n)
       },
       error: (e) => {
         console.log(e)
+        this.errorMessage = e.error
       },
       complete: () =>{
         
