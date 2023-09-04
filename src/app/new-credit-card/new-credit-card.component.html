@@ -10,23 +10,45 @@
             <div class="name">
                 <input type="text"
                     formControlName="name"
+                    [ngClass]="{ 'invalid-feedback': submitted && fc['name'].errors }"
                 >
+            </div>
+            <div *ngIf="submitted && fc['name'].errors" class="invalid-feedback">
+                <div *ngIf="fc['name'].errors['required']">Name is required</div>
+                <div *ngIf="fc['name'].errors['maxlength']">Name need to have at maximum 24 characters</div>
             </div>
         </div>
         <div class="form-group">
             <label for="number">Number</label>
             <div class="number">
                 <input type="text" 
+                    (change)="checkCardNetworkOnNumberChange($event)"
                     formControlName="number"
+                    [ngClass]="{ 'invalid-feedback': submitted && fc['number'].errors }"
                 >
+                
+            </div>
+            <div *ngIf="creditCardNetwork" class="card-network-container">
+                <img *ngIf="creditCardNetwork() == 'MasterCard'" class="card-network-item" src="/assets/img/ressources/Mastercard-logo.svg.png" alt="">
+                <img *ngIf="creditCardNetwork() == 'Visa'" class="card-network-item" src="/assets/img/ressources/Visa_Inc._logo.svg.png" alt="">
+                <img *ngIf="creditCardNetwork() == 'Amex'" class="card-network-item" src="/assets/img/ressources/American_Express_logo_(2018).svg.png" alt="">
+            </div>
+            <div *ngIf="submitted && fc['number'].errors" class="invalid-feedback">
+                <div *ngIf="fc['number'].errors['required']">Number is required</div>
+                <div *ngIf="fc['number'].errors['minlength']">Number need to have at least 15 characters</div>
+                <div *ngIf="fc['number'].errors['maxlength']">Number need to have at maximum 16 characters</div>
             </div>
         </div>
         <div class="form-group">
             <label for="expirationDate">Expiration date</label>
             <div class="expirationDate">
-                <input type="date" 
+                <input type="month"  
                     formControlName="expirationDate"
+                    [ngClass]="{ 'invalid-feedback': submitted && fc['expirationDate'].errors }"
                 >
+            </div>
+            <div *ngIf="submitted && fc['expirationDate'].errors" class="invalid-feedback">
+                <div *ngIf="fc['expirationDate'].errors['required']">Expiration date is required</div>
             </div>
         </div>
         <div class="form-group">
@@ -34,12 +56,21 @@
             <div class="cvv">
                 <input type="text"
                     formControlName="cvv"
+                    [ngClass]="{ 'invalid-feedback': submitted && fc['cvv'].errors }"
                 >
+            </div>
+            <div class="invalid-feedback" *ngIf="submitted && fc['cvv'].errors">
+                <div *ngIf="fc['cvv'].errors['required']">Cvv is required</div>
+                <div *ngIf="fc['cvv'].errors['minlength']">Cvv need to have at least 3 characters</div>
+                <div *ngIf="fc['cvv'].errors['maxlength']">Cvv need to have at maximum 3 characters</div>
             </div>
         </div>
         <div class="buttons-container">
-            <button type="submit">New credit card</button>
-            <button type="clear">Clear</button>
+            <button type="submit" class="btn-new-creditCard primary-button">New credit card</button>
+            <button type="reset" (click)="clearFormResidues()" class="btn-clear-creditCard-form thertiary-button">Clear</button>
+        </div>
+        <div class="invalid-feedback" *ngIf="submitted && errorMessage">
+            {{errorMessage | showServerError}}
         </div>
     </form>
 </div>

@@ -5,7 +5,7 @@ html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .primary-button{    
     padding: 10px;
-    background-color: #fca311;
+    background-color: #fca311 !important;    
     color: #000;
     border-radius: 10px;
 }
@@ -20,6 +20,6 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .thertiary-button{
     padding: 10px;
     background-color: #ffff !important;
-    border: gray 1px solid;    
+    border: gray 1px solid !important;    
     border-radius: 10px;
 }

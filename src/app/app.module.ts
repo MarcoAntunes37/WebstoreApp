@@ -23,6 +23,9 @@ import { NewCreditCardComponent } from './new-credit-card/new-credit-card.compon
 import { EditCreditCardComponent } from './edit-credit-card/edit-credit-card.component';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
+import { HideAllNumbersPipe } from './_customPipes/hide-all-numbers.pipe';
+import { HideCreditCardNumbersPipe } from './_customPipes/hide-credit-card-numbers.pipe';
+import { ShowServerErrorPipe } from './_customPipes/show-server-error.pipe';
 
 @NgModule({
   declarations: [
@@ -44,6 +47,9 @@ import { ChangePasswordComponent } from './change-password/change-password.compo
     EditCreditCardComponent,
     EditProfileComponent,
     ChangePasswordComponent,
+    HideAllNumbersPipe,
+    HideCreditCardNumbersPipe,
+    ShowServerErrorPipe,
   ],
   imports: [
     BrowserModule,

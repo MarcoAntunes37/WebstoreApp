@@ -4,3 +4,29 @@
     justify-content: center;
     min-height: 40vw;
 }
+
+form{
+    border: 1px solid black;
+    padding: 2vw;
+    border-radius: 15px;
+}
+
+label{
+    margin-inline: 0.5vw;
+}
+
+input{
+    padding: 0.8vw;
+    min-width: 15vw;
+    border-radius: 8px
+}
+
+.invalid-feedback {
+    color: red;
+}
+
+button{
+    margin-inline: 1vw;
+    margin-block: 0.5vw;
+    min-width: 5vw;
+}

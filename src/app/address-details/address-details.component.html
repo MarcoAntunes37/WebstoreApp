@@ -1,27 +1,24 @@
-<div class="address-details">
+<div class="address-details-container">
     <h1>Addresses</h1>
-    <div class="button-new">
-        <button (click)="callNewAddressRoute()">
-            <mat-icon class="mat-icon-size">add</mat-icon>
-        </button>
-        <div class="">
-            New address
-        </div>
+    <div class="button-new-container">
+        <button class="btn-new-address" (click)="callNewAddressRoute()">
+            <mat-icon>add</mat-icon>
+        </button>        
     </div>
     <div class="" *ngFor="let address of addresses">
-        <div class="">
-            <div class="street">{{address.street}}</div>
-            <div class="city">{{address.city}}</div>
-            <div class="state">{{address.state}}</div>
-            <div class="country">{{address.country}}</div>
-            <div class="postalCode">{{address.postalCode}}</div>
+        <div class="address-details">
+            <div class="street address-attr">{{address.street}}</div>
+            <div class="city address-attr">{{address.city}}</div>
+            <div class="state address-attr">{{address.state}}</div>
+            <div class="country address-attr">{{address.country}}</div>
+            <div class="postalCode address-attr">{{address.postalCode}}</div>
         </div>
         <div class="button-container">
-            <button (click)="callEditAddressRoute(address)">
-                <mat-icon class="mat-icon-size">edit</mat-icon>
+            <button class="btn-edit-address" (click)="callEditAddressRoute(address)">
+                <mat-icon>edit</mat-icon>
             </button>
-            <button (click)="callDeleteAddressRoute(address.id)">
-                <mat-icon class="mat-icon-size">delete</mat-icon>
+            <button class="btn-delete-address" (click)="callDeleteAddressRoute(address.id)">
+                <mat-icon>delete</mat-icon>
             </button>
         </div>
     </div>

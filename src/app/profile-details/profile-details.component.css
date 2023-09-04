@@ -1,6 +1,46 @@
-.user-information-container{
+.profile-details-container{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    text-align: center;
+}
+
+.btn-edit-profile, 
+.btn-edit-password{
+    padding: 0.2vw !important;
+}
+
+.btn-edit-profile:hover, 
+.btn-edit-password:hover{
+    width: 5vw;
+    background-color: gray;
+    color: black;
+}
+
+.btn-edit-password{
+    background-color: green;
+    border: 1px solid black;
+    border-radius: 5px;
+    color: #e6e6e6;
+}
+
+.btn-edit-profile{ 
+    background-color: blue;
+    border: 1px solid black;
+    border-radius: 5px;
+    color: #e6e6e6;
+}
+
+.profile-attr{
+    text-align: center;
+    border: 1px rgb(187, 187, 187) solid;
+    border-radius: 5px;
+    width: 15vw;
+}
+
+.button-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-block: 0.5vw;
 }

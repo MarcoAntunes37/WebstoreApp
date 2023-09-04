@@ -63,8 +63,7 @@ export class LoginComponent implements OnInit {
           this.reloadPage();
         },
         error: (err) => {
-          let error = err.error.split("\r");
-          this.errorMessage = error[0].split(":")[1]
+          this.errorMessage = err.error
           console.log(err)
           this.isLoginFailed = true;
         }

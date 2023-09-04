@@ -1,0 +1,66 @@
+.credit-card-detail-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+h1{
+    text-align: center;
+}
+
+.button-new-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-block: 0.5vw;
+}
+
+.btn-new-credit-card, 
+.btn-edit-credit-card, 
+.btn-delete-credit-card{
+    padding: 0px !important;
+}
+
+.btn-new-credit-card:hover, 
+.btn-edit-credit-card:hover, 
+.btn-delete-credit-card:hover{
+    background-color: #e6e6e6;
+    color: black
+}
+
+.btn-new-credit-card{
+    background-color: green;
+    border: solid 1px black;
+    border-radius: 5px;
+    color: #e6e6e6
+}
+
+.btn-edit-credit-card{
+    background-color: blue;
+    border: solid 1px black;
+    border-radius: 5px;
+    color: #e6e6e6
+}
+
+
+.btn-delete-credit-card{
+    background-color: red;
+    border: 1px solid black;
+    border-radius: 5px;
+    color: #e6e6e6;
+}
+
+.credit-card-attr{
+    text-align: center;
+    border: 1px rgb(187, 187, 187) solid;
+    border-radius: 5px;
+    width: 15vw;
+}
+
+.button-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-block: 0.5vw;
+}

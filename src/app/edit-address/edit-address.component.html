@@ -94,7 +94,12 @@
         </div>
         <div class="buttons-container">
             <button type="submit" class="primary-button">Edit address</button>
-            <button type="clear" class="thertiary-button">Clear</button>
+            <button type="reset" (click)="clearFormResidues()" class="thertiary-button">Clear</button>
+        </div>
+        <div class="form-group">
+            <div class="invalid-feedback" *ngIf="submitted && errorMessage">
+                {{errorMessage | showServerError}}
+            </div>
         </div>
     </form>
 </div>

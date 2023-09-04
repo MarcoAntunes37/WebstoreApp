@@ -8,8 +8,10 @@
         <div class="form-group">
             <label for="username">Username</label>
             <div class="username">                
-                <input type="text" class="form-control"
-                formControlName="username">
+                <input type="text"
+                    class="form-control"
+                    formControlName="username"                    
+                >
             </div>
         </div>
         <div class="form-group">
@@ -18,7 +20,12 @@
                 <input type="text"
                     class="form-control"
                     formControlName="email"
+                    [ngClass]="{ 'invalid-feedback': submitted && fc['email'].errors }"
                 >
+            </div>
+            <div *ngIf="submitted && fc['email'].errors" class="invalid-feedback">
+                <div *ngIf="fc['email'].errors['required']">Email is required</div>
+                <div *ngIf="fc['email'].errors['email']">Email must be a valid email</div>  
             </div>
         </div>        
         <div class="form-group">
@@ -27,7 +34,13 @@
                 <input type="text"
                     class="form-control"
                     formControlName="firstName"
+                    [ngClass]="{ 'invalid-feedback': submitted && fc['firstName'].errors }"
                 >
+           </div>
+           <div *ngIf="submitted && fc['firstName'].errors" class="invalid-feedback">
+                <div *ngIf="fc['firstName'].errors['required']">First name is required</div>
+                <div *ngIf="fc['firstName'].errors['minlength']">First name must have at least 3 characters</div>
+                <div *ngIf="fc['firstName'].errors['maxlength']">First name must have at maximum of 20 characters</div>
            </div>
         </div>
         <div class="form-group">
@@ -36,8 +49,14 @@
                 <input type="text"
                     class="form-control"
                     formControlName="lastName"
+                    [ngClass]="{ 'invalid-feedback': submitted && fc['lastName'].errors }"
                 >
             </div>
+            <div *ngIf="submitted && fc['lastName'].errors" class="invalid-feedback">
+                <div *ngIf="fc['lastName'].errors['required']">Last name is required</div>
+                <div *ngIf="fc['lastName'].errors['minlength']">Last name must have at least 3 characters</div>
+                <div *ngIf="fc['lastName'].errors['maxlength']">Last name must have at maximum of 20 characters</div>
+           </div>
         </div>
         <div class="form-group">
             <label for="telephone">Telephone</label>
@@ -45,12 +64,25 @@
                 <input type="text"
                     class="form-control"
                     formControlName="telephone"
+                    [ngClass]="{ 'invalid-feedback': submitted && fc['telephone'].errors }"
                 >
             </div>
+            <div *ngIf="submitted && fc['telephone'].errors" class="invalid-feedback">
+                <div *ngIf="fc['telephone'].errors['required']">Last name is required</div>
+                <div *ngIf="fc['telephone'].errors['minlength']">Telephone must have at least 11 characters</div>
+                <div *ngIf="fc['telephone'].errors['maxlength']">Telephone must have at maximum of 11 characters</div>
+           </div>
         </div>        
-        <button type="submit">
+        <button type="submit" class="btn-update-profile primary-button">
             Update profile
         </button>
-        
+        <button type="clear" class="btn-clear-form-profile thertiary-button">
+            Clear
+        </button>
+        <div class="form-group">
+            <div class="invalid-feedback" *ngIf="submitted && errorMessage">
+                {{errorMessage | showServerError}}
+            </div>
+        </div>
     </form>
 </div>

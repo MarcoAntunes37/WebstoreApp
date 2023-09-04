@@ -45,7 +45,7 @@ export class RegisterComponent implements OnInit{
       Validators.required,
       Validators.minLength(8),
       Validators.maxLength(30),
-      PasswordValidators.strenght
+      PasswordValidators.strength
     ]),
     confirmPassword: new FormControl<string>('', [
       Validators.required,
@@ -89,7 +89,7 @@ export class RegisterComponent implements OnInit{
       [ Validators.required,
         Validators.minLength(8),
         Validators.maxLength(30),
-        PasswordValidators.strenght ]
+        PasswordValidators.strength ]
       ],
       confirmPassword: ['', 
       [ Validators.required,
@@ -117,7 +117,7 @@ export class RegisterComponent implements OnInit{
       },
      error: (err) => {
       console.log(err.error)
-      this.errorMessage = err.error!.split(",")[0].split(":")[1].split('\r')[0]   
+      this.errorMessage = err.error   
       },
      complete: () => {
       setTimeout(()=>this.router.navigate(['home']), 2000);}     

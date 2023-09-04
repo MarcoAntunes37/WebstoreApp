@@ -14,10 +14,10 @@
     </div>
   </div>
   <div class="toolbar-right">
-    <div class="dropown-menu username" *ngIf="isLoggedIn">
+    <div class="logged-dropdown-menu" *ngIf="isLoggedIn">
       {{username}}
       <mat-icon class="icon-expand">expand_more</mat-icon>
-      <div class="dropdown-content">
+      <div class="logged-dropdown-content">
         <div class="user-options">
           <div class="user-options-left">
             <a [routerLink]="['/user-details/'+username]">Show you profile</a>
@@ -28,12 +28,12 @@
         </div>
       </div> 
     </div>   
-    <div class="dropown-menu" *ngIf="!isLoggedIn">
+    <div class="dropdown-menu" *ngIf="!isLoggedIn">
       <span class="signin-dropdown">Sign in</span>
       <mat-icon class="icon-expand">expand_more</mat-icon>
       <div class="dropdown-content">
-      <a routerLink="/login">
-          <button class="button signin-button">Sign in <mat-icon>login</mat-icon></button>
+        <a routerLink="/login">
+          <button class="primary-button signin-button">Sign in <mat-icon>login</mat-icon></button>
         </a>
         <span>You are new? You can signup&nbsp;<a routerLink="/register">here</a></span>
       </div>

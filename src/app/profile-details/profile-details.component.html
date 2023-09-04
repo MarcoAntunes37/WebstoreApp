@@ -1,16 +1,17 @@
-<div class="profile-details">
+<div class="profile-details-container">
     <h1>Profile</h1>
-    <div hidden>{{id}}</div>
-    <div class="username">{{username}}</div> 
-    <div class="email">{{email}}</div>   
-    <div class="firstName">{{firstName}}</div>
-    <div class="lastName">{{lastName}}</div>    
-    <div class="telephone">{{telephone}}</div> 
+    <div class="username profile-attr">{{username}}</div> 
+    <div class="email profile-attr">{{email}}</div>   
+    <div class="firstName profile-attr">{{firstName}}</div>
+    <div class="lastName profile-attr">{{lastName}}</div>    
+    <div class="telephone profile-attr">{{telephone}}</div> 
     
     <div class="button-container">
-        <button (click)="callEditUserRoute()">Edit user</button>
-        <button (click)="callEditPasswordRoute()">
-            Change password
+        <button title="Edit profile" class="btn-edit-profile" (click)="callEditUserRoute()">
+            <mat-icon>edit</mat-icon>
+        </button>
+        <button title="Change password" class="btn-edit-password" (click)="callEditPasswordRoute()">
+            <mat-icon>password</mat-icon>
         </button>
     </div>
 </div>

@@ -15,7 +15,7 @@
             />
             <div *ngIf="submitted && fc['firstName'].errors" class="invalid-feedback">                
                 <div *ngIf="fc['firstName'].errors['required']">Firstname is required</div>
-                <div *ngIf="fc['firstName'].errors['minlength']">Firstname must be at least 3 characteres</div>
+                <div *ngIf="fc['firstName'].errors['minlength']">Firstname must be at least 3 characters</div>
             </div>
         </div>
         <div class="form-group">
@@ -29,7 +29,7 @@
             />
             <div *ngIf="submitted && fc['lastName'].errors" class="invalid-feedback">
                 <div *ngIf="fc['lastName'].errors['required']">Lastname is required</div>
-                <div *ngIf="fc['lastName'].errors['minlength']">Lastname must be at least 3 characteres</div>
+                <div *ngIf="fc['lastName'].errors['minlength']">Lastname must be at least 3 characters</div>
             </div>
         </div>
         <div class="form-group">
@@ -43,8 +43,8 @@
             />
             <div *ngIf="submitted && fc['telephone'].errors" class="invalid-feedback">
                 <div *ngIf="fc['telephone'].errors['required']">Telephone is required</div>
-                <div *ngIf="fc['telephone'].errors['minlength']">Telephone must be 11 characteres</div>
-                <div *ngIf="fc['telephone'].errors['maxlength']">Telephone must be 11 characteres</div>
+                <div *ngIf="fc['telephone'].errors['minlength']">Telephone must be 11 characters</div>
+                <div *ngIf="fc['telephone'].errors['maxlength']">Telephone must be 11 characters</div>
             </div>
         </div>
         <div class="form-group">
@@ -72,8 +72,8 @@
             />
             <div *ngIf="submitted && fc['username'].errors" class="invalid-feedback">
                 <div *ngIf="fc['username'].errors['required']">Username is required</div>
-                <div *ngIf="fc['username'].errors['minlength']">Username must be at least 8 characteres</div>
-                <div *ngIf="fc['username'].errors['maxlength']">Username must not exceed 20 characteres</div>
+                <div *ngIf="fc['username'].errors['minlength']">Username must be at least 8 characters</div>
+                <div *ngIf="fc['username'].errors['maxlength']">Username must not exceed 20 characters</div>
             </div>
         </div>
         <div class="form-group">
@@ -87,9 +87,9 @@
             />
             <div *ngIf="submitted && fc['password'].errors" class="invalid-feedback">
                 <div *ngIf="fc['password'].errors['required']">Password is required</div>
-                <div *ngIf="fc['password']!.hasError('strenght')">Password must have at least one special character, one capital letter and one number</div>
-                <div *ngIf="fc['password'].errors['maxlength']">Password must be at least 8 characteres</div>
-                <div *ngIf="fc['password'].errors['maxlength']">Password must not exceed 30 characteres</div>
+                <div *ngIf="fc['password']!.hasError('strength')">Password must have at least one special character, one capital letter and one number</div>
+                <div *ngIf="fc['password'].errors['maxlength']">Password must be at least 8 characters</div>
+                <div *ngIf="fc['password'].errors['maxlength']">Password must not exceed 30 characters</div>
             </div>
         </div>
         <div class="form-group">
@@ -103,8 +103,8 @@
             />
             <div *ngIf="submitted && fc['confirmPassword'].errors" class="invalid-feedback">
                 <div *ngIf="fc['confirmPassword'].errors['required']">Confirm password is required</div>
-                <div *ngIf="fc['confirmPassword'].errors['minlength']">Confirm password must be at least 8 characteres</div>
-                <div *ngIf="fc['confirmPassword'].errors['maxlength']">Confirm password must not exceed 30 characteres</div>
+                <div *ngIf="fc['confirmPassword'].errors['minlength']">Confirm password must be at least 8 characters</div>
+                <div *ngIf="fc['confirmPassword'].errors['maxlength']">Confirm password must not exceed 30 characters</div>
                 <div *ngIf="fc['confirmPassword']!.hasError('matching')">Confirm password does not match</div>
             </div>
         </div>
@@ -119,7 +119,9 @@
             </button>
           </div>
          <div class="form-group">
-            <div *ngIf="submitted && errorMessage" class="invalid-feedback">{{errorMessage}}</div>
+            <div class="invalid-feedback" *ngIf="submitted && errorMessage" >
+                {{errorMessage | showServerError}}
+            </div>
          </div>
     </form>    
 </div>

@@ -19,10 +19,10 @@ export class AddressDetailsComponent {
  
   callNewAddressRoute(){
     this.router.navigate(
-      ['user-details/'+this.username+'/new-address/'],
-      {
+      ['user-details/'+this.username+'/new-address/'], {
         state: {
-          userId: this.userId
+          userId: this.userId,
+          lastUrl: this.router.url
         }
       }
     )
@@ -31,11 +31,12 @@ export class AddressDetailsComponent {
   callEditAddressRoute(address: Address){    
     this.selectedAddress = address;
     this.router.navigate(
-      ['user-details/'+this.username+'/edit-address/'],{
+      ['user-details/'+this.username+'/edit-address/'], {
         state: {
           userId: this.userId,
           username: this.username,
-          address: this.selectedAddress
+          address: this.selectedAddress,
+          lastUrl: this.router.url
         }
       }
     )
@@ -45,12 +46,13 @@ export class AddressDetailsComponent {
     this.deleteAddress(id, this.userId).subscribe({
       next: (n) => {
         console.log(n)
+        alert(n)
       },
       error: (e) => {
         console.log(e)
       },
       complete: () => {
-
+        window.location.reload();
       }
     })
   }

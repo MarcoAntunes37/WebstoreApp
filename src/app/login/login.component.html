@@ -40,8 +40,8 @@
           </button>
         </div>
         <div class="form-group">
-          <div *ngIf="isLoginFailed" class="invalid-feedback">
-            Login failed: {{ errorMessage }}
+          <div class="invalid-feedback" *ngIf="submitted && errorMessage">
+            {{ errorMessage | showServerError }}
           </div>
         </div>
       </form>

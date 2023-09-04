@@ -1,18 +1,24 @@
-<div class="credit-card-details">
+<div class="credit-card-details-container">
     <h1>Creditcards</h1>
-    <div class="button-new">
-        <button (click)="callNewCreditCardRoute()">New credit card</button>
+    <div class="button-new-container">
+        <button class="btn-new-credit-card" (click)="callNewCreditCardRoute()">
+            <mat-icon>add</mat-icon>
+        </button>
     </div>
-    <div class="" *ngFor="let creditCard of creditCards">
-        <div class="">
-            <div class="name">{{creditCard.name}}</div>
-            <div class="number">{{creditCard.number}}</div>
-            <div class="expirationDate">{{creditCard.expirationDate}}</div>
-            <div class="cvv">{{creditCard.cvv}}</div>            
+    <div *ngFor="let creditCard of creditCards">
+        <div class="credit-card-details">
+            <div class="name credit-card-attr">{{creditCard.name}}</div>
+            <div class="number credit-card-attr">{{creditCard.number | hideCreditCardNumbers}}</div>
+            <div class="expirationDate credit-card-attr">{{creditCard.expirationDate | date: 'MM/YYYY'}}</div>
+            <div class="cvv credit-card-attr">{{creditCard.cvv | hideAllNumbers}}</div>            
         </div>
         <div class="button-container">
-            <button (click)="callEditCreditCardRoute(creditCard)">Edit credit card</button>
-            <button (click)="callDeleteCreditCardRoute(creditCard.id)">Delete creditCard</button>
+            <button class="btn-edit-credit-card" (click)="callEditCreditCardRoute(creditCard)">
+                <mat-icon>edit</mat-icon>
+            </button>
+            <button class="btn-delete-credit-card" (click)="callDeleteCreditCardRoute(creditCard.id)">
+                <mat-icon>delete</mat-icon>
+            </button>
         </div>
     </div>
 </div>

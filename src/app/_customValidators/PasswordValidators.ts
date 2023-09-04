@@ -17,7 +17,7 @@ export class PasswordValidators{
         }
     }
 
-    static strenght(control: AbstractControl): ValidationErrors | null{
+    static strength(control: AbstractControl): ValidationErrors | null{
         let value = control.value || '';
 
         if(!value)
@@ -26,17 +26,17 @@ export class PasswordValidators{
         let uppperCaseRule = /[A-Z]+/g
 
         if(uppperCaseRule.test(value) === false)
-            return { strenght: `Password must contain at least one upper case character` }
+            return { strength: `Password must contain at least one upper case character` }
 
         let numberRule = /[0-9]+/g
 
         if(numberRule.test(value) === false)
-            return { strenght: `Password must contain at least one number character` }
+            return { strength: `Password must contain at least one number character` }
 
         let specialCharRule = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/
 
         if(specialCharRule.test(value) === false)
-            return { strenght: `Password must contain at least one special character` } 
+            return { strength: `Password must contain at least one special character` } 
 
         return null;
     }

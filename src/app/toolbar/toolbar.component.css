@@ -71,12 +71,11 @@ input[type=text] {
     color: #fca311;
 }
 
-.dropown-menu {
+.dropdown-menu,
+.logged-dropdown-menu{
     display: flex;
-    font-size: 18px;
-    justify-content: center;
+    flex-direction: row;
     align-items: center;
-    max-width: 55w;
 }
 
 .signin-dropdown {
@@ -86,9 +85,10 @@ input[type=text] {
     margin-bottom: auto;
 }
 
-.dropdown-content {
+.dropdown-content,
+.logged-dropdown-content {
     display: none;
-    width: 30%;
+    width: 30vw;
     font-size: 14px;
     line-height: 70px;
     height: 100px;
@@ -99,6 +99,10 @@ input[type=text] {
     text-align: center;
     padding: 10px;
     z-index: 1;
+}
+
+.logged-dropdown-content {
+    width: 20vw !important;
 }
 
 .icon-expand {
@@ -112,24 +116,28 @@ span {
     color: black;
 }
 
-.button {
-    display: flex;
-    padding: 10px;
-    justify-content: center;
-    align-items: center;
-    background-color: #fca311;
-    color: #000;
-    border-radius: 15px;
-}
 
 .signin-button {
+    display: flex;
+    justify-content: center;
+    font-size: 20px;
+    align-items: center;
+    padding: 10px;
     width: 50%;
     margin: auto;
+}
+
+.signin-button:hover{
+    text-decoration: underline;
 }
 
 .logout-button{
     margin: auto;
     padding: 1vw;
+}
+
+.logout-button:hover{
+    text-decoration: underline;
 }
 
 a:visited,
@@ -142,11 +150,17 @@ a {
 .user-options{
     display: flex;
     justify-content: space-between;
-    
 }
 
 
-.dropown-menu:hover .dropdown-content {
+.dropdown-menu:hover .dropdown-content {
+    display: block;
+    top: 80px;
+    right: 85px;
+    position: fixed;
+}
+
+.logged-dropdown-menu:hover .logged-dropdown-content {
     display: block;
     top: 80px;
     right: 85px;

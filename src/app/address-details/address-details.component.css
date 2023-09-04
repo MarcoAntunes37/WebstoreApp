@@ -1,5 +1,67 @@
-.button-new {
+.address-detail-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+h1{
+    text-align: center;
+}
+
+.button-new-container {
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: center;
+    margin-block: 0.5vw;
+}
+
+.btn-new-address, 
+.btn-edit-address, 
+.btn-delete-address{
+    padding: 0.2vw !important;
+}
+
+.btn-new-address:hover, 
+.btn-edit-address:hover, 
+.btn-delete-address:hover{
+    width: 5vw;
+    background-color: gray;
+    color: black;
+}
+
+.btn-new-address{
+    background-color: green;
+    border: solid 1px black;
+    border-radius: 5px;
+    color: #e6e6e6
+}
+
+.btn-edit-address{
+    background-color: blue;
+    border: solid 1px black;
+    border-radius: 5px;
+    color: #e6e6e6
+}
+
+
+.btn-delete-address{
+    background-color: red;
+    border: 1px solid black;
+    border-radius: 5px;
+    color: #e6e6e6;
+}
+
+.address-attr{
+    text-align: center;
+    border: 1px rgb(187, 187, 187) solid;
+    border-radius: 5px;
+    width: 15vw;
+}
+
+.button-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-block: 0.5vw;
 }

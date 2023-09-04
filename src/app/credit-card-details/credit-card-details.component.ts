@@ -1,7 +1,8 @@
-import { Component, Input, inject, signal } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
 import { UserService } from '../_services/user.service';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { HideAllNumbersPipe } from '../_customPipes/hide-all-numbers.pipe';
 
 @Component({
   selector: 'app-credit-card-details',
@@ -13,14 +14,16 @@ export class CreditCardDetailsComponent {
   @Input() userId!: string
   @Input() username!: string
   private userService = inject(UserService)
+  private router = inject(Router)
   selectedCreditCard!: any;
-  router = inject(Router)
+  
 
   callNewCreditCardRoute(){
     this.router.navigate(['user-details/'+this.username+'/new-credit-card'], 
     {
       state: { 
-        userId: this.userId 
+        userId: this.userId,
+        lastUrl: this.router.url
       }
     })
   }
@@ -32,6 +35,7 @@ export class CreditCardDetailsComponent {
       state: {
         userId: this.userId,
         creditCard: this.selectedCreditCard,
+        lastUrl: this.router.url
       }
     })
   }
@@ -40,12 +44,13 @@ export class CreditCardDetailsComponent {
     this.deleteCreditCard(id, this.userId).subscribe({
       next: (n) => {
         console.log(n)
+        alert(n)
       },
       error: (e) => {
         console.log(e)
       },
       complete: () => {
-
+        window.location.reload()
       }
     })
   }

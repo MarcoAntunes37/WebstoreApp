@@ -80,7 +80,6 @@ export class NewAddressComponent {
     let newAddress = this.newAddressForm.value;
     let userId = history.state.userId;
     
-    console.log('callingapi')
     this.createAddress(newAddress, userId).subscribe({
       next: (n) => {
         console.log(n)
@@ -91,9 +90,13 @@ export class NewAddressComponent {
         this.errorMessage = e.error
       },
       complete: () => {
-       
+       setTimeout(() => {this.router.navigate([history.state.lastUrl])}, 2000);
       }
     })
+  }
+
+  clearFormResidues(){
+    this.submitted = false
   }
 
   createAddress(address: any, userId: string):Observable<Address>{

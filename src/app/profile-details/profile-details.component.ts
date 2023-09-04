@@ -17,35 +17,32 @@ export class ProfileDetailsComponent {
   @Input() lastName!:string;
   @Input() telephone!:string;
 
-  ngInit(){
-
-  }
-
   callEditPasswordRoute(){
     this.router.navigate(
       ['user-details/'+this.username+'/change-password'],{
         state: {
-          id: this.id
+          id: this.id,
+          lastUrl: this.router.url
         }
       }
     )
   }
+  
   callEditUserRoute(){    
     this.router.navigate(
       ['user-details/'+this.username+'/edit-user/'], {
         state: { 
           user: {
-          id: this.id,
-          username: this.username,
-          email: this.email,
-          firstName: this.firstName,
-          lastName: this.lastName,
-          telephone: this.telephone
-          }
+            id: this.id,
+            username: this.username,
+            email: this.email,
+            firstName: this.firstName,
+            lastName: this.lastName,
+            telephone: this.telephone
+          },
+          lastUrl: this.router.url
         }
       }
     )
   }
-
-
 }

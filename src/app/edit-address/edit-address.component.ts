@@ -14,6 +14,7 @@ import data from '../../assets/forms-data/estados-cidades2.json'
 export class EditAddressComponent {
   private fb = inject(FormBuilder)
   private userService = inject(UserService)
+  private router = inject(Router)
   states = data.states
   selectedState: any;
   filteredCity: any;
@@ -28,7 +29,11 @@ export class EditAddressComponent {
     city: new FormControl<string>('', [ Validators.required ]),
     state: new FormControl<string>('', [ Validators.required ]),
     country: new FormControl<string>('', [ Validators.required ]),
-    postalCode: new FormControl<string>('', [ Validators.required ])
+    postalCode: new FormControl<string>('', [ 
+      Validators.required,
+      Validators.minLength(8),
+      Validators.maxLength(8) 
+    ])
   })
 
   ngOnInit(){
@@ -60,6 +65,9 @@ export class EditAddressComponent {
     this.selectedState = this.states.find(x => x.name == name)
   }
 
+  clearFormResidues(){
+    this.submitted = false
+  }
   editAddressOnClick(): void{
     this.submitted = true
 
@@ -89,7 +97,7 @@ export class EditAddressComponent {
         this.errorMessage = e.error
       },
       complete: () =>{
-        
+        setTimeout(() => {this.router.navigate([history.state.lastUrl])}, 2000);
       }
     })
   }
