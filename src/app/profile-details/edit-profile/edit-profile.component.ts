@@ -1,14 +1,18 @@
 import { Component, Input, inject, signal } from '@angular/core';
-import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { UserService } from '../_services/user.service';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import { UserService } from '../../_services/user.service';
 import { Observable } from 'rxjs';
-import { User } from '../_interfaces/User';
+import { User } from '../../_interfaces/User';
 import { Router } from '@angular/router';
+import { ShowServerErrorPipe } from '../../_customPipes/show-server-error.pipe';
+import { NgClass, NgIf } from '@angular/common';
 
 @Component({
-  selector: 'app-edit-profile',
-  templateUrl: './edit-profile.component.html',
-  styleUrls: ['./edit-profile.component.css']
+    selector: 'app-edit-profile',
+    templateUrl: './edit-profile.component.html',
+    styleUrls: ['./edit-profile.component.css'],
+    standalone: true,
+    imports: [ReactiveFormsModule, NgClass, NgIf, ShowServerErrorPipe]
 })
 export class EditProfileComponent {
   private fb = inject(FormBuilder);

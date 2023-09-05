@@ -1,17 +1,17 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { AuthService } from '../_services/auth.service';
 import { StorageService } from '../_services/storage.service';
-import { AbstractControl, 
-  FormBuilder, 
-  FormControl, 
-  FormGroup, 
-  Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import { Router, RouterLink } from '@angular/router';
+import { ShowServerErrorPipe } from '../_customPipes/show-server-error.pipe';
+import { NgIf, NgClass } from '@angular/common';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+    selector: 'app-login',
+    templateUrl: './login.component.html',
+    styleUrls: ['./login.component.css'],
+    standalone: true,
+    imports: [NgIf, ReactiveFormsModule, NgClass, RouterLink, ShowServerErrorPipe]
 })
 
 export class LoginComponent implements OnInit {

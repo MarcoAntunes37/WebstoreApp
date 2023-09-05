@@ -1,17 +1,17 @@
 import { Component, OnInit, inject } from '@angular/core';
-import { AbstractControl, 
-  FormBuilder, 
-  FormControl, 
-  FormGroup, 
-  Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { UserService } from '../_services/user.service';
 import { PasswordValidators } from '../_customValidators/PasswordValidators';
 import { Router } from '@angular/router';
+import { ShowServerErrorPipe } from '../_customPipes/show-server-error.pipe';
+import { NgClass, NgIf } from '@angular/common';
 
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css', '../reset.css']
+    selector: 'app-register',
+    templateUrl: './register.component.html',
+    styleUrls: ['./register.component.css', '../reset.css'],
+    standalone: true,
+    imports: [ReactiveFormsModule, NgClass, NgIf, ShowServerErrorPipe]
 })
 
 export class RegisterComponent implements OnInit{

@@ -1,12 +1,15 @@
 import { Component, Input, inject} from '@angular/core';
 
 import { Router } from '@angular/router';
+import { MatIconModule } from '@angular/material/icon';
 
 
 @Component({
-  selector: 'app-profile-details',
-  templateUrl: './profile-details.component.html',
-  styleUrls: ['./profile-details.component.css']
+    selector: 'app-profile-details',
+    templateUrl: './profile-details.component.html',
+    styleUrls: ['./profile-details.component.css'],
+    standalone: true,
+    imports: [MatIconModule]
 })
 export class ProfileDetailsComponent {
   private router = inject(Router)

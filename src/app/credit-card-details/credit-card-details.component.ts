@@ -3,11 +3,16 @@ import { UserService } from '../_services/user.service';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { HideAllNumbersPipe } from '../_customPipes/hide-all-numbers.pipe';
+import { HideCreditCardNumbersPipe } from '../_customPipes/hide-credit-card-numbers.pipe';
+import { NgFor, DatePipe } from '@angular/common';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
-  selector: 'app-credit-card-details',
-  templateUrl: './credit-card-details.component.html',
-  styleUrls: ['./credit-card-details.component.css']
+    selector: 'app-credit-card-details',
+    templateUrl: './credit-card-details.component.html',
+    styleUrls: ['./credit-card-details.component.css'],
+    standalone: true,
+    imports: [MatIconModule, NgFor, DatePipe, HideAllNumbersPipe, HideCreditCardNumbersPipe]
 })
 export class CreditCardDetailsComponent {
   @Input() creditCards!: any[]

@@ -1,14 +1,18 @@
 import { Component, inject, signal } from '@angular/core';
-import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { UserService } from '../_services/user.service';
-import { CreditCard } from '../_interfaces/CreditCard';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import { UserService } from '../../_services/user.service';
+import { CreditCard } from '../../_interfaces/CreditCard';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
+import { ShowServerErrorPipe } from '../../_customPipes/show-server-error.pipe';
+import { NgClass, NgIf } from '@angular/common';
 
 @Component({
-  selector: 'app-edit-credit-card',
-  templateUrl: './edit-credit-card.component.html',
-  styleUrls: ['./edit-credit-card.component.css']
+    selector: 'app-edit-credit-card',
+    templateUrl: './edit-credit-card.component.html',
+    styleUrls: ['./edit-credit-card.component.css'],
+    standalone: true,
+    imports: [ReactiveFormsModule, NgClass, NgIf, ShowServerErrorPipe]
 })
 export class EditCreditCardComponent {
   private fb = inject(FormBuilder)

@@ -8,8 +8,8 @@ describe('AddressDetailsComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [AddressDetailsComponent]
-    });
+    imports: [AddressDetailsComponent]
+});
     fixture = TestBed.createComponent(AddressDetailsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

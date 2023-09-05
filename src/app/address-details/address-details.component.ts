@@ -3,11 +3,15 @@ import { Router } from '@angular/router';
 import { Address } from '../_interfaces/Address';
 import { UserService } from '../_services/user.service';
 import { Observable } from 'rxjs';
+import { NgFor } from '@angular/common';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
-  selector: 'app-address-details',
-  templateUrl: './address-details.component.html',
-  styleUrls: ['./address-details.component.css']
+    selector: 'app-address-details',
+    templateUrl: './address-details.component.html',
+    styleUrls: ['./address-details.component.css'],
+    standalone: true,
+    imports: [MatIconModule, NgFor]
 })
 export class AddressDetailsComponent {  
   @Input() addresses!: any[]

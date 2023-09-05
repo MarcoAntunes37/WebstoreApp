@@ -1,7 +1,8 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'hideAllNumbers'
+    name: 'hideAllNumbers',
+    standalone: true
 })
 export class HideAllNumbersPipe implements PipeTransform {
 

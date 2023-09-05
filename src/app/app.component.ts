@@ -1,10 +1,15 @@
 import { Component, OnInit, inject, signal } from '@angular/core';
 import { StorageService } from './_services/storage.service';
+import { FooterComponent } from './footer/footer.component';
+import { RouterOutlet } from '@angular/router';
+import { ToolbarComponent } from './toolbar/toolbar.component';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css', './reset.css']
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.css', './reset.css'],
+    standalone: true,
+    imports: [ToolbarComponent, RouterOutlet, FooterComponent]
 })
 export class AppComponent implements OnInit{
   private storageService = inject(StorageService)

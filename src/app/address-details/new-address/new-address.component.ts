@@ -1,16 +1,20 @@
 import { Component, inject } from '@angular/core';
-import { AbstractControl, FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import { UserService } from '../_services/user.service';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { UserService } from '../../_services/user.service';
 import { Observable } from 'rxjs';
-import { Address } from '../_interfaces/Address';
+import { Address } from '../../_interfaces/Address';
 import { Router } from '@angular/router';
 import { Validators } from '@angular/forms';
-import data from '../../assets/forms-data/estados-cidades2.json'
+import data from '../../../assets/forms-data/estados-cidades2.json'
+import { ShowServerErrorPipe } from '../../_customPipes/show-server-error.pipe';
+import { NgClass, NgIf, NgFor } from '@angular/common';
 
 @Component({
-  selector: 'app-new-address',
-  templateUrl: './new-address.component.html',
-  styleUrls: ['./new-address.component.css']
+    selector: 'app-new-address',
+    templateUrl: './new-address.component.html',
+    styleUrls: ['./new-address.component.css'],
+    standalone: true,
+    imports: [ReactiveFormsModule, NgClass, NgIf, NgFor, ShowServerErrorPipe]
 })
 export class NewAddressComponent {
   private fb = inject(FormBuilder)

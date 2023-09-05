@@ -2,11 +2,15 @@ import { Component, Input, OnInit, Output, inject, signal } from '@angular/core'
 import { ProductService } from '../_services/product.service';
 import {Product} from '../_interfaces/Product'
 import { Observable, of } from 'rxjs';
+import { RouterLink } from '@angular/router';
+import { NgIf, NgFor } from '@angular/common';
 
 @Component({
-  selector: 'app-product-list',
-  templateUrl: './product-list.component.html',
-  styleUrls: ['./product-list.component.css']
+    selector: 'app-product-list',
+    templateUrl: './product-list.component.html',
+    styleUrls: ['./product-list.component.css'],
+    standalone: true,
+    imports: [NgIf, NgFor, RouterLink]
 })
 export class ProductListComponent implements OnInit {
   private productService = inject(ProductService)

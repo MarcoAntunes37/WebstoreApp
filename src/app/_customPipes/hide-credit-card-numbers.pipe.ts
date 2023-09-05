@@ -1,7 +1,8 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'hideCreditCardNumbers'
+    name: 'hideCreditCardNumbers',
+    standalone: true
 })
 export class HideCreditCardNumbersPipe implements PipeTransform {
 

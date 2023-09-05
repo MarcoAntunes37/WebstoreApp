@@ -6,12 +6,13 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { ProductListComponent } from './product-list/product-list.component';
 import { UserDetailsComponent } from './user-details/user-details.component';
-import { NewAddressComponent } from './new-address/new-address.component';
-import { EditAddressComponent } from './edit-address/edit-address.component';
-import { EditProfileComponent } from './edit-profile/edit-profile.component';
-import { ChangePasswordComponent } from './change-password/change-password.component';
-import { NewCreditCardComponent } from './new-credit-card/new-credit-card.component';
-import { EditCreditCardComponent } from './edit-credit-card/edit-credit-card.component';
+import { NewAddressComponent } from './address-details/new-address/new-address.component';
+import { EditAddressComponent } from './address-details/edit-address/edit-address.component';
+import { EditProfileComponent } from './profile-details/edit-profile/edit-profile.component';
+import { ChangePasswordComponent } from './profile-details/change-password/change-password.component';
+import { NewCreditCardComponent } from './credit-card-details/new-credit-card/new-credit-card.component';
+import { EditCreditCardComponent } from './credit-card-details/edit-credit-card/edit-credit-card.component';
+import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 
 const routes: Routes = [
   //product-list
@@ -35,6 +36,9 @@ const routes: Routes = [
   //credit-card
   {path: 'user-details/:useranme/new-credit-card', component: NewCreditCardComponent, pathMatch: 'full'},
   {path: 'user-details/:username/edit-credit-card', component: EditCreditCardComponent, pathMatch: 'full'},
+
+  //shopping-cart
+  {path: ':username/shopping-cart', component: ShoppingCartComponent, pathMatch: 'full'},
   
   //wildcard
   {path: '**', component: PageNotFoundComponent},

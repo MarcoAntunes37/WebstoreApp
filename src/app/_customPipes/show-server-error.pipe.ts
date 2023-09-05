@@ -1,7 +1,8 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'showServerError'
+    name: 'showServerError',
+    standalone: true
 })
 export class ShowServerErrorPipe implements PipeTransform {
 

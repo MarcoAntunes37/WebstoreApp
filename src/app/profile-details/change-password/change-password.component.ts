@@ -1,15 +1,19 @@
 import { Component, inject } from '@angular/core';
-import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { UserService } from '../_services/user.service';
+import { UserService } from '../../_services/user.service';
 import { Observable } from 'rxjs';
-import { UserChangePassword } from '../_interfaces/UserChangePassword';
-import { PasswordValidators } from '../_customValidators/PasswordValidators';
+import { UserChangePassword } from '../../_interfaces/UserChangePassword';
+import { PasswordValidators } from '../../_customValidators/PasswordValidators';
+import { ShowServerErrorPipe } from '../../_customPipes/show-server-error.pipe';
+import { NgClass, NgIf } from '@angular/common';
 
 @Component({
-  selector: 'app-change-password',
-  templateUrl: './change-password.component.html',
-  styleUrls: ['./change-password.component.css']
+    selector: 'app-change-password',
+    templateUrl: './change-password.component.html',
+    styleUrls: ['./change-password.component.css'],
+    standalone: true,
+    imports: [ReactiveFormsModule, NgClass, NgIf, ShowServerErrorPipe]
 })
 export class ChangePasswordComponent {
   private fb = inject(FormBuilder)
