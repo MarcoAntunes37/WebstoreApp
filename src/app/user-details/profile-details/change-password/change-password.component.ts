@@ -1,11 +1,11 @@
 import { Component, inject } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { UserService } from '../../_services/user.service';
+import { UserService } from '../../../_services/user.service';
 import { Observable } from 'rxjs';
-import { UserChangePassword } from '../../_interfaces/UserChangePassword';
-import { PasswordValidators } from '../../_customValidators/PasswordValidators';
-import { ShowServerErrorPipe } from '../../_customPipes/show-server-error.pipe';
+import { UserChangePassword } from '../../../_interfaces/UserChangePassword';
+import { PasswordValidators } from '../../../_customValidators/PasswordValidators';
+import { ShowServerErrorPipe } from '../../../_customPipes/show-server-error.pipe';
 import { NgClass, NgIf } from '@angular/common';
 
 @Component({

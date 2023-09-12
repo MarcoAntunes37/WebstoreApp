@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
+import { filter } from 'rxjs';
 
 const USER_KEY = 'auth-user';
+const CART_KEY = 'shopping-cart';
 
 @Injectable({
   providedIn: 'root'
@@ -32,5 +34,36 @@ export class StorageService {
     }
 
     return false;
+  }
+
+  public addToCart(item: any): void{    
+    let cart = []
+    cart = JSON.parse(window.sessionStorage.getItem(CART_KEY)!) || []
+    cart.push(item)
+    console.log(item)
+    window.sessionStorage.setItem(CART_KEY, JSON.stringify(cart))
+  }
+
+  public removeFromCart( prod: any): void {
+    let cart: any[] = []
+    cart = JSON.parse(window.sessionStorage.getItem(CART_KEY)!) || []
+    let arrayWithoutDeleted = cart.filter((x: any) =>{
+      return x.id !== prod.id
+    })
+    window.sessionStorage.removeItem(CART_KEY)
+    window.sessionStorage.setItem(CART_KEY, JSON.stringify(arrayWithoutDeleted))
+  }
+
+  public clearCart(): void{
+    window.sessionStorage.removeItem(CART_KEY)
+  }
+
+  public getCart(): any {
+    const cart = window.sessionStorage.getItem(CART_KEY)
+    if(cart){
+      return JSON.parse(cart)
+    }
+
+    return {}
   }
 }

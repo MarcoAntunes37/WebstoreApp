@@ -1,11 +1,11 @@
 import { Component, inject } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { UserService } from '../../_services/user.service';
-import { Address } from '../../_interfaces/Address';
+import { UserService } from '../../../_services/user.service';
+import { Address } from '../../../_interfaces/Address';
 import { Observable } from 'rxjs';
-import data from '../../../assets/forms-data/estados-cidades2.json'
-import { ShowServerErrorPipe } from '../../_customPipes/show-server-error.pipe';
+import data from '../../../../assets/forms-data/estados-cidades2.json'
+import { ShowServerErrorPipe } from '../../../_customPipes/show-server-error.pipe';
 import { NgClass, NgIf, NgFor } from '@angular/common';
 
 @Component({
@@ -72,6 +72,7 @@ export class EditAddressComponent {
   clearFormResidues(){
     this.submitted = false
   }
+  
   editAddressOnClick(): void{
     this.submitted = true
 

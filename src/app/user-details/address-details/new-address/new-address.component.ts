@@ -1,12 +1,12 @@
 import { Component, inject } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { UserService } from '../../_services/user.service';
+import { UserService } from '../../../_services/user.service';
 import { Observable } from 'rxjs';
-import { Address } from '../../_interfaces/Address';
+import { Address } from '../../../_interfaces/Address';
 import { Router } from '@angular/router';
 import { Validators } from '@angular/forms';
-import data from '../../../assets/forms-data/estados-cidades2.json'
-import { ShowServerErrorPipe } from '../../_customPipes/show-server-error.pipe';
+import data from '../../../../assets/forms-data/estados-cidades2.json'
+import { ShowServerErrorPipe } from '../../../_customPipes/show-server-error.pipe';
 import { NgClass, NgIf, NgFor } from '@angular/common';
 
 @Component({

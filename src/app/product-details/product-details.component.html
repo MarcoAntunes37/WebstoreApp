@@ -31,8 +31,16 @@
             </div>            
         </div>
         <div class="button-container">
-            <button class="add-cart secondary-button">Add to cart</button>
-            <button class="buy-now primary-button">Buy now</button>
+            <button [disabled]="isOutOffStock" 
+                class="add-cart secondary-button"
+                (click)="addToCart(product)"
+            >
+                Add to cart
+            </button>
+            <button (click)="removeCart(product)">
+                Remove from cart
+            </button>
+            <button [disabled]="isOutOffStock" class="buy-now primary-button">Buy now</button>
         </div>
     </div>
     

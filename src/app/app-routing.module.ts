@@ -4,20 +4,22 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
-import { ProductListComponent } from './product-list/product-list.component';
 import { UserDetailsComponent } from './user-details/user-details.component';
-import { NewAddressComponent } from './address-details/new-address/new-address.component';
-import { EditAddressComponent } from './address-details/edit-address/edit-address.component';
-import { EditProfileComponent } from './profile-details/edit-profile/edit-profile.component';
-import { ChangePasswordComponent } from './profile-details/change-password/change-password.component';
-import { NewCreditCardComponent } from './credit-card-details/new-credit-card/new-credit-card.component';
-import { EditCreditCardComponent } from './credit-card-details/edit-credit-card/edit-credit-card.component';
+import { NewAddressComponent } from './user-details/address-details/new-address/new-address.component';
+import { EditAddressComponent } from './user-details/address-details/edit-address/edit-address.component';
+import { EditProfileComponent } from './user-details/profile-details/edit-profile/edit-profile.component';
+import { ChangePasswordComponent } from './user-details/profile-details/change-password/change-password.component';
+import { NewCreditCardComponent } from './user-details/credit-card-details/new-credit-card/new-credit-card.component';
+import { EditCreditCardComponent } from './user-details/credit-card-details/edit-credit-card/edit-credit-card.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
+import { WelcomeComponent } from './welcome/welcome.component';
 
 const routes: Routes = [
   //product-list
-  {path: '', component: ProductListComponent },
-  {path: 'home', component: ProductListComponent},
+  {path: 'home', component: WelcomeComponent},
+  {path: 'products', 
+    loadComponent: () => import('./product-list/product-list.component').then(m => m.ProductListComponent)
+  },
   {path: 'product-details/:id', component: ProductDetailsComponent},
   
   //authentication

@@ -12,8 +12,9 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
     imports: [ToolbarComponent, RouterOutlet, FooterComponent]
 })
 export class AppComponent implements OnInit{
+  title = 'webstoreapp'
   private storageService = inject(StorageService)
-  isLoggedIn = signal<boolean>(false);  
+  isLoggedIn = signal<boolean>(false); 
   username = signal<string>('');
   role = signal<string>('');
   notValidBefore?: EpochTimeStamp;

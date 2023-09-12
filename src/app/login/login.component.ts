@@ -1,17 +1,21 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, inject, signal } from '@angular/core';
 import { AuthService } from '../_services/auth.service';
 import { StorageService } from '../_services/storage.service';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { ShowServerErrorPipe } from '../_customPipes/show-server-error.pipe';
 import { NgIf, NgClass } from '@angular/common';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
     selector: 'app-login',
     templateUrl: './login.component.html',
     styleUrls: ['./login.component.css'],
     standalone: true,
-    imports: [NgIf, ReactiveFormsModule, NgClass, RouterLink, ShowServerErrorPipe]
+    imports: [NgIf, ReactiveFormsModule, NgClass, RouterLink, ShowServerErrorPipe,
+      MatFormFieldModule, MatButtonModule
+    ]
 })
 
 export class LoginComponent implements OnInit {
@@ -24,14 +28,14 @@ export class LoginComponent implements OnInit {
     username: new FormControl<string>('', [Validators.required]),
     password: new FormControl<string>('', [Validators.required])
   })
-  submitted=false;
-  isLoggedIn = false;
-  isLoginFailed = false;
-  errorMessage = '';  
+  submitted = signal<boolean>(false);
+  isLoggedIn = signal<boolean>(false);
+  isLoginFailed = signal<boolean>(false);
+  errorMessage = signal<string>('');  
 
   ngOnInit(): void {
     if (this.storageService.isLoggedIn()) {
-      this.isLoggedIn = true;
+      this.isLoggedIn.set(true);
       this.redirectHome();
     }
     this.loginForm = this.fb.group({
@@ -44,9 +48,9 @@ export class LoginComponent implements OnInit {
   get fc(): { [key: string]: AbstractControl } {
     return this.loginForm.controls;
   }
-
+  
   onSubmit(): void {
-    this.submitted = true;    
+    this.submitted.set(true)
     if (this.loginForm.invalid) {
       return;
     }
@@ -58,14 +62,14 @@ export class LoginComponent implements OnInit {
       this.authService.login(username!, password!).subscribe({
         next: (data) => {
           this.storageService.saveUser(data);
-          this.isLoginFailed = false;
-          this.isLoggedIn = true;
+          this.isLoginFailed.set(true)
+          this.isLoggedIn.set(true)
           this.reloadPage();
         },
         error: (err) => {
-          this.errorMessage = err.error
+          this.errorMessage.set(err)
           console.log(err)
-          this.isLoginFailed = true;
+          this.isLoginFailed.set(true)
         }
       });
   }

@@ -1,9 +1,9 @@
 import { Component, Input, inject } from '@angular/core';
-import { UserService } from '../_services/user.service';
+import { UserService } from '../../_services/user.service';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { HideAllNumbersPipe } from '../_customPipes/hide-all-numbers.pipe';
-import { HideCreditCardNumbersPipe } from '../_customPipes/hide-credit-card-numbers.pipe';
+import { HideAllNumbersPipe } from '../../_customPipes/hide-all-numbers.pipe';
+import { HideCreditCardNumbersPipe } from '../../_customPipes/hide-credit-card-numbers.pipe';
 import { NgFor, DatePipe } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 

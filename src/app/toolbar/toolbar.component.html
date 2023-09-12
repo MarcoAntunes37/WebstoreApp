@@ -1,45 +1,45 @@
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-<div class="toolbar" role="banner">
-  <div class="toolbar-left">
-    <a routerLink="/home" class="link-logo">
-      <img src="assets\img\ressources\fulllogoWebstore.png" alt="">
+<mat-toolbar class="topbar telative toolbar" 
+  color="primary"  ng-reflect-color="primary" 
+  style="flex-direction: row; box-sizing: border-box; display: flex;position: fixed;" 
+  [class.mat-elevation-z24]="isActive"
+>
+  <span>
+    <a routerLink="/home">
+      <img src="../../assets/img/ressources/fulllogoWebstore.png" alt="Logo"/>
     </a>
-  </div>
-  <div class="toolbar-fill">
-    <div class="search-toolbar">
-      <input type="text" placeholder="Search in webstore" />
-      <button type="submit" class="search-button">
-        <mat-icon>search</mat-icon>
-      </button>
-    </div>
-  </div>
-  <div class="toolbar-right">
-    <div class="logged-dropdown-menu" *ngIf="isLoggedIn">
-      <span class="username-dropdown">{{username}}</span>
-      <mat-icon class="icon-expand">expand_more</mat-icon>
-      <div class="logged-dropdown-content">
-        <div class="user-options">
-          <div class="user-options-left">
-            <a [routerLink]="['/user-details/'+username]">Show you profile</a>
-          </div>
-          <div class="user-options-right">
-            <button class="thertiary-button logout-button" (click)="logout()">Logout</button>
-          </div>          
-        </div>
-      </div> 
-    </div>   
-    <div class="dropdown-menu" *ngIf="!isLoggedIn">
-      <span class="signin-dropdown">Sign in</span>
-      <mat-icon class="icon-expand">expand_more</mat-icon>
-      <div class="dropdown-content">
-        <a routerLink="/login">
-          <button class="primary-button signin-button">Sign in <mat-icon>login</mat-icon></button>
-        </a>
-        <span>You are new? You can signup&nbsp;<a routerLink="/register">here</a></span>
-      </div>
-    </div>
-    <div class="shopping-cart">
-      <mat-icon class="material-icons mat-icon-36-size">shopping_cart</mat-icon>
-    </div>
-  </div>
-</div>
+  </span>
+  <span class="spacer"></span>
+  <mat-form-field appearance="fill">
+    <input matInput type="text" placeholder="Search" />
+  </mat-form-field>
+  <button mat-icon-button aria-label="Search">
+    <mat-icon>search</mat-icon>
+  </button>
+  <button
+    mat-button
+    [matMenuTriggerFor]="loginSignupMenu"
+    aria-label="Login/Signup"
+    *ngIf="!isLoggedIn"
+  >
+    Login/Signup
+  </button>
+  <mat-menu #loginSignupMenu="matMenu">
+    <button mat-menu-item routerLink="/login">Login</button>
+    <button mat-menu-item routerLink="/register">Signup</button>
+  </mat-menu>
+  <button
+    mat-button
+    [matMenuTriggerFor]="profileLogoutMenu"
+    aria-label="Login/Signup"
+    *ngIf="isLoggedIn"
+  >
+    {{username}}
+  </button>
+  <mat-menu #profileLogoutMenu="matMenu">
+    <button mat-menu-item [routerLink]="['/user-details/'+username]">Profile</button>
+    <button mat-menu-item (click)="logout()">Logout</button>
+  </mat-menu>
+  <button mat-icon-button aria-label="Cart" [routerLink]="[username+'/shopping-cart']">
+    <mat-icon>shopping_cart</mat-icon>
+  </button>  
+</mat-toolbar>

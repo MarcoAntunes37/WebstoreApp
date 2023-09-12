@@ -1,10 +1,10 @@
 import { Component, Input, inject, signal } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
-import { UserService } from '../../_services/user.service';
+import { UserService } from '../../../_services/user.service';
 import { Observable } from 'rxjs';
-import { User } from '../../_interfaces/User';
+import { User } from '../../../_interfaces/User';
 import { Router } from '@angular/router';
-import { ShowServerErrorPipe } from '../../_customPipes/show-server-error.pipe';
+import { ShowServerErrorPipe } from '../../../_customPipes/show-server-error.pipe';
 import { NgClass, NgIf } from '@angular/common';
 
 @Component({

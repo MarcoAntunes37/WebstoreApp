@@ -3,23 +3,4 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-.primary-button{    
-    padding: 10px;
-    background-color: #fca311 !important;    
-    color: #000;
-    border-radius: 10px;
-}
-
-.secondary-button{
-    padding: 10px;
-    background-color: #e5e5e5 !important;
-    border: gray 1px solid !important;    
-    border-radius: 10px;
-}
-
-.thertiary-button{
-    padding: 10px;
-    background-color: #ffff !important;
-    border: gray 1px solid !important;    
-    border-radius: 10px;
-}
+.mat-mdc-form-field-bottom-align::before { display: none !important; }

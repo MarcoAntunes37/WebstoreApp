@@ -1,7 +1,7 @@
 import { Component, Input, inject} from '@angular/core';
 import { Router } from '@angular/router';
-import { Address } from '../_interfaces/Address';
-import { UserService } from '../_services/user.service';
+import { Address } from './address';
+import { UserService } from 'src/app/_services/user.service';
 import { Observable } from 'rxjs';
 import { NgFor } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';

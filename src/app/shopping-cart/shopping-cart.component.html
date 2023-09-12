@@ -1,1 +1,30 @@
-<p>shopping-cart works!</p>
+<div class="shopping-cart-container">
+    <div class="cart-list">
+        <div class="">
+            <input type="checkbox" name="" id="">
+        </div>
+        <div *ngFor="let item of cartItems()"
+            class="cart-item"
+        >
+            <div class="">
+                <input type="checkbox" name="" id="">
+            </div>
+            <div class="name">{{item.name}}</div>
+            <div class="price">{{item.price | currency}}</div>
+            <div class="quantity">
+                <button (click)="removeQuantity(item)">-</button>
+                    {{item.cartQnt}}
+                <button (click)="addQuantity(item)">+</button>
+            </div>
+            <div class="button-container">
+                <button (click)="removeFromCart(item)">Remove</button>
+            </div>
+        </div>
+        <div class="">
+            Total: 
+        </div>
+        <div class="">
+            <button>Checkout</button>
+        </div>
+    </div>
+</div>

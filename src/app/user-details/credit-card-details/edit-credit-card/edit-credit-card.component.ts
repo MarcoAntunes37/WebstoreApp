@@ -1,10 +1,10 @@
 import { Component, inject, signal } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
-import { UserService } from '../../_services/user.service';
-import { CreditCard } from '../../_interfaces/CreditCard';
+import { UserService } from '../../../_services/user.service';
+import { CreditCard } from '../../../_interfaces/CreditCard';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
-import { ShowServerErrorPipe } from '../../_customPipes/show-server-error.pipe';
+import { ShowServerErrorPipe } from '../../../_customPipes/show-server-error.pipe';
 import { NgClass, NgIf } from '@angular/common';
 
 @Component({

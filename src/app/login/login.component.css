@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 10vw;
+    margin: 15vw;
 }
 
 form{
@@ -25,28 +25,9 @@ label{
 }
 
 input{
-    width: 25vw;
+    width: 26vw;
     padding: 0.8vw;
     border-radius: 5px;
-}
-
-.button-container{
-    display: flex;
-    justify-content: space-between;    
-}
-
-button{
-    margin-top: 0.5vw;
-    width: 8vw;
-    height: 3vw;
-    font-size: 20px;
-    font-weight: 500; 
-}
-
-button:hover{
-    border: 1px solid black;
-    text-decoration: underline;
-    font-weight: 600;
 }
 
 .invalid-feedback{
@@ -56,4 +37,8 @@ button:hover{
 a{
     text-decoration: none;
     color: blue;
+}
+
+.login-form-field{
+    width: 30vw;
 }
